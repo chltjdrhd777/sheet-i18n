@@ -1,0 +1,30 @@
+{
+  "name": "@sheet-i18n/google-sheet-exporter",
+  "version": "0.1.0",
+  "description": "sheet export using google sheets api",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --watch"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "google-auth-library": "^9.15.0",
+    "google-spreadsheet": "^4.1.4"
+  },
+  "devDependencies": {
+    "@sheet-i18n/eslint-config": "workspace:*",
+    "@sheet-i18n/typescript-config": "workspace:*"
+  }
+}

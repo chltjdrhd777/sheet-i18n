@@ -1,0 +1,26 @@
+{
+  "name": "sheet-i18n",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --watch"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@sheet-i18n/google-sheet-exporter": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^6.0.0",
+    "typescript": "^5.0.0",
+    "@sheet-i18n/eslint-config": "workspace:*",
+    "@sheet-i18n/typescript-config": "workspace:*"
+  }
+}
