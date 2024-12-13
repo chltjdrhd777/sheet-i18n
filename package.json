@@ -5,9 +5,12 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
+    "plop": "plop",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "mkdirp": "^3.0.1",
+    "plop": "^4.0.1",
     "prettier": "^3.2.5",
     "tsup": "^8.3.5",
     "turbo": "^2.3.3",

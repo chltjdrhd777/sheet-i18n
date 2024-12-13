@@ -1,0 +1,10 @@
+dist
+node_modules
+.next
+build
+scripts
+pnpm-lock.yaml
+
+# Ignore files
+!plopfile.js
+plop-templates

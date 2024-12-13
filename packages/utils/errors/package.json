@@ -1,7 +1,7 @@
 {
-  "name": "@sheet-i18n/google-sheet-exporter",
+  "name": "@your-scope/errors",
   "version": "0.1.0",
-  "description": "sheet export using google sheets api",
+  "description": "Utility functions for string manipulation",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -16,22 +16,14 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "keywords": [
-    "sheet-i18n",
-    "google-spreadsheet",
-    "i18n",
-    "translation"
-  ],
+  "keywords": ["sheet-i18n", "utils", "string-utils"],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",
     "url": "https://github.com/chltjdrhd777"
   },
   "license": "ISC",
-  "dependencies": {
-    "google-auth-library": "^9.15.0",
-    "google-spreadsheet": "^4.1.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
