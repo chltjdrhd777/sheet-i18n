@@ -31,3 +31,14 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# Custom Ignore Rules
+*.css
+public/*
+tests/*
+scripts/*
+*.config.js
+
+# Exclusions (Files to Include)
+!plopfile.js
+!tsup.config.ts
