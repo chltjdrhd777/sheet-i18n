@@ -1,5 +1,5 @@
 {
-  "name": "@your-scope/errors",
+  "name": "@sheet-i18n/errors",
   "version": "0.1.0",
   "description": "Utility functions for string manipulation",
   "main": "./dist/index.js",
@@ -29,6 +29,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
+    "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }
