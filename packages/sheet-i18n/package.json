@@ -20,7 +20,6 @@
   "devDependencies": {
     "tsup": "^6.0.0",
     "typescript": "^5.0.0",
-    "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

@@ -33,7 +33,6 @@
     "google-spreadsheet": "^4.1.4"
   },
   "devDependencies": {
-    "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

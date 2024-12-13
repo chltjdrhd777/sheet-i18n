@@ -1,0 +1,11 @@
+*.css
+dist
+public/*
+tests/*
+scripts/*
+*.config.js
+.DS_Store
+node_modules
+build
+!plopfile.js
+!tsup.config.ts

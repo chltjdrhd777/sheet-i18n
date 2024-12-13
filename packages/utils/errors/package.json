@@ -16,7 +16,11 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "keywords": ["sheet-i18n", "utils", "string-utils"],
+  "keywords": [
+    "sheet-i18n",
+    "utils",
+    "string-utils"
+  ],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",
@@ -25,7 +29,6 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

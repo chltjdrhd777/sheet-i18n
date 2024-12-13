@@ -1,7 +1,7 @@
 export class GoogleSheetManager {
   constructor() {}
 
-  test() {
-    console.log('hello world');
+  test(hello: string) {
+    console.log("hello world");
   }
 }
