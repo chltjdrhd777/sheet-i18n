@@ -1,8 +1,10 @@
 {
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
 
   "typescript.tsdk": "node_modules/typescript/lib"
 }
