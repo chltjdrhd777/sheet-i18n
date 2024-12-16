@@ -1,8 +1,9 @@
 {
-  "name": "sheet-i18n",
+  "name": "@sheet-i18n/{{dashCase utilName}}",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "description": "{{description}}",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
@@ -14,12 +15,14 @@
       "import": "./dist/index.mjs"
     }
   },
-  "dependencies": {
-    "@sheet-i18n/google-sheet-exporter": "workspace:*"
+  "keywords": [],
+  "author": {
+    "name": "devAnderson",
+    "email": "chltjdrhd777@gmail.com",
+    "url": "https://github.com/chltjdrhd777"
   },
+  "license": "ISC",
   "devDependencies": {
-    "tsup": "^6.0.0",
-    "typescript": "^5.0.0",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

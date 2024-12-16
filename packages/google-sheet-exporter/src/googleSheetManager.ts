@@ -2,6 +2,6 @@ export class GoogleSheetManager {
   constructor() {}
 
   testMethod() {
-    console.log('hello?!!');
+    console.log('change test');
   }
 }

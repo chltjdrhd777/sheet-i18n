@@ -1,13 +1,13 @@
 {
   "name": "@sheet-i18n/{{dashCase utilName}}",
   "version": "0.1.0",
-  "description": "Utility functions for string manipulation",
+  "description": "{{description}}",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --watch"
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
   },
   "exports": {
     ".": {
@@ -15,7 +15,7 @@
       "import": "./dist/index.mjs"
     }
   },
-  "keywords": ["sheet-i18n", "utils", "string-utils"],
+  "keywords": [],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",

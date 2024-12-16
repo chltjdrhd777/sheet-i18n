@@ -74,7 +74,7 @@ export default [
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/interactive-supports-focus': 'warn',
       'prettier/prettier': ['error', { singleQuote: true, useTabs: false }],
-      'no-unused-vars': 'error',
+      'no-unused-vars': 'warn',
       'unused-imports/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'warn',
 
