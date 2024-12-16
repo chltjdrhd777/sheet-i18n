@@ -4,7 +4,7 @@
   "printWidth": 100,
   "semi": true,
   "useTabs": false,
-  "singleQuote": false,
+  "singleQuote": true,
   "bracketSpacing": false,
   "endOfLine": "auto",
   "arrowParens": "always",
