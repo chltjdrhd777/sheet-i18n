@@ -6,7 +6,7 @@
     }
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "never"
   },
 
   "typescript.tsdk": "node_modules/typescript/lib"
