@@ -71,7 +71,7 @@ export default [
       'react-hooks/exhaustive-deps': 'off',
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/interactive-supports-focus': 'warn',
-      'prettier/prettier': ['error', {singleQuote: true}],
+      'prettier/prettier': ['error', {singleQuote: true, useTabs: false}],
       'no-unused-vars': 'error',
       'unused-imports/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'warn',

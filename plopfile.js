@@ -1,5 +1,6 @@
-const mkdirp = require("mkdirp");
-const fs = require("fs");
+const fs = require('fs');
+
+const mkdirp = require('mkdirp');
 
 // helpers
 const capitalize = (str) => {
@@ -11,14 +12,14 @@ const camelCase = (str) => {
 };
 
 // workspaces in packages
-const workspaces = ["configs", "google-sheet-exporter", "sheet-i18n", "utils"];
+const workspaces = ['configs', 'google-sheet-exporter', 'sheet-i18n', 'utils'];
 
 // generate targets
-const generators = ["util"];
+const generators = ['util'];
 
 // dir name for generated files
 const defaultOutDirs = {
-  util: "utils",
+  util: 'utils',
 };
 
 /**
@@ -26,8 +27,8 @@ const defaultOutDirs = {
  */
 module.exports = function main(plop) {
   // set helper functions
-  plop.setHelper("capitalize", (text) => capitalize(camelCase(text)));
-  plop.setHelper("camelCase", (text) => camelCase(text));
+  plop.setHelper('capitalize', (text) => capitalize(camelCase(text)));
+  plop.setHelper('camelCase', (text) => camelCase(text));
 
   // define generators
   // gen is the member name of the generator array
@@ -36,7 +37,7 @@ module.exports = function main(plop) {
       description: `Generates a new ${gen}`,
       prompts: [
         {
-          type: "input",
+          type: 'input',
           name: `${gen}Name`,
           message: `Enter the name of the new ${gen}:`,
           validate: (value) => {
@@ -44,20 +45,21 @@ module.exports = function main(plop) {
             if (value !== value.toLowerCase()) {
               return `${gen} name must be in lowercase`;
             }
-            if (value.includes(" ")) {
+            if (value.includes(' ')) {
               return `${gen} name cannot have spaces`;
             }
+
             return true;
           },
         },
         {
-          type: "input",
-          name: "description",
+          type: 'input',
+          name: 'description',
           message: `Provide a description for the ${gen}:`,
         },
         {
-          type: "list",
-          name: "outDir",
+          type: 'list',
+          name: 'outDir',
           message: `Where should this ${gen} be created?`,
           default: defaultOutDirs[gen],
           choices: workspaces,
@@ -66,10 +68,11 @@ module.exports = function main(plop) {
       ],
       actions(answers) {
         const actions = [];
+
         if (!answers) return actions;
 
         const {description, outDir} = answers;
-        const generatorName = answers[`${gen}Name`] ?? "";
+        const generatorName = answers[`${gen}Name`] ?? '';
 
         const destPath = `packages/${outDir}/${generatorName}`;
         const srcPath = `${destPath}/src`;
@@ -79,11 +82,12 @@ module.exports = function main(plop) {
           if (!fs.existsSync(`${srcPath}/index.ts`)) {
             fs.writeFileSync(`${srcPath}/index.ts`, `// Entry file for ${generatorName}`);
           }
+
           return `Created src folder and initialized index.ts at ${srcPath}`;
         });
 
         actions.push({
-          type: "addMany",
+          type: 'addMany',
           templateFiles: `plop-templates/${gen}/**`,
           destination: `packages/${outDir}/{{dashCase ${gen}Name}}`,
           base: `plop-templates/${gen}`,
