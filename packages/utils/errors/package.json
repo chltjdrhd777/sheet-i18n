@@ -29,7 +29,6 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@sheet-i18n/eslint-config": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }
