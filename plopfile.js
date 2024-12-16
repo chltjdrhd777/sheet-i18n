@@ -71,7 +71,7 @@ module.exports = function main(plop) {
 
         if (!answers) return actions;
 
-        const {description, outDir} = answers;
+        const { description, outDir } = answers;
         const generatorName = answers[`${gen}Name`] ?? '';
 
         const destPath = `packages/${outDir}/${generatorName}`;
@@ -80,7 +80,10 @@ module.exports = function main(plop) {
         actions.push(() => {
           mkdirp.sync(srcPath);
           if (!fs.existsSync(`${srcPath}/index.ts`)) {
-            fs.writeFileSync(`${srcPath}/index.ts`, `// Entry file for ${generatorName}`);
+            fs.writeFileSync(
+              `${srcPath}/index.ts`,
+              `// Entry file for ${generatorName}`
+            );
           }
 
           return `Created src folder and initialized index.ts at ${srcPath}`;

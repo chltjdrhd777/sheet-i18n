@@ -1,1 +1,1 @@
-export {GoogleSheetManager} from './googleSheetManager';
+export { GoogleSheetManager } from './googleSheetManager';

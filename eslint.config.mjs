@@ -1,4 +1,4 @@
-import {fixupConfigRules, fixupPluginRules} from '@eslint/compat';
+import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import react from 'eslint-plugin-react';
 import unusedImports from 'eslint-plugin-unused-imports';
 import _import from 'eslint-plugin-import';
@@ -8,9 +8,9 @@ import prettier from 'eslint-plugin-prettier';
 import globals from 'globals';
 import tsParser from '@typescript-eslint/parser';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
-import {FlatCompat} from '@eslint/eslintrc';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,8 +26,8 @@ export default [
       'plugin:react/recommended',
       'plugin:prettier/recommended',
       'plugin:react-hooks/recommended',
-      'plugin:jsx-a11y/recommended',
-    ),
+      'plugin:jsx-a11y/recommended'
+    )
   ),
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
@@ -42,7 +42,9 @@ export default [
 
     languageOptions: {
       globals: {
-        ...Object.fromEntries(Object.entries(globals.browser).map(([key]) => [key, 'off'])),
+        ...Object.fromEntries(
+          Object.entries(globals.browser).map(([key]) => [key, 'off'])
+        ),
         ...globals.node,
       },
 
@@ -71,7 +73,7 @@ export default [
       'react-hooks/exhaustive-deps': 'off',
       'jsx-a11y/click-events-have-key-events': 'warn',
       'jsx-a11y/interactive-supports-focus': 'warn',
-      'prettier/prettier': ['error', {singleQuote: true, useTabs: false}],
+      'prettier/prettier': ['error', { singleQuote: true, useTabs: false }],
       'no-unused-vars': 'error',
       'unused-imports/no-unused-vars': 'off',
       'unused-imports/no-unused-imports': 'warn',
