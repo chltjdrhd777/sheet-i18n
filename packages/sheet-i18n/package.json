@@ -15,7 +15,7 @@
     }
   },
   "dependencies": {
-    "@sheet-i18n/google-sheet-exporter": "workspace:*"
+    "@sheet-i18n/sheet-exporter": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.0.0",

@@ -1,1 +1,1 @@
-export { googleSheetExporter } from '@sheet-i18n/google-sheet-exporter';
+export { sheetExporter } from '@sheet-i18n/sheet-exporter';

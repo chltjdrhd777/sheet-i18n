@@ -1,7 +1,7 @@
 {
-  "name": "@sheet-i18n/google-sheet-exporter",
+  "name": "@sheet-i18n/sheet-exporter",
   "version": "0.1.0",
-  "description": "sheet export using google sheets api",
+  "description": "sheet exporter using sheet api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "keywords": [
     "sheet-i18n",
-    "google-spreadsheet",
+    "spreadsheet",
     "i18n",
     "translation"
   ],

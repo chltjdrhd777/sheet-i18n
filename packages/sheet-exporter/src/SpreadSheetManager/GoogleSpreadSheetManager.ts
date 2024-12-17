@@ -1,17 +1,10 @@
 import { JWT } from 'google-auth-library';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-import { CustomErrorConstructor } from '@sheet-i18n/errors';
 import { validator } from '@sheet-i18n/shared-utils';
 
-import { SheetManager } from './abstract';
-import {
-  InValidInitConfigError,
-  LoadDocError,
-  NoAuthClientError,
-  NoSheetError,
-} from './errors';
-
-import { GoogleSheetCredentials } from '.';
+import { SheetManager } from '../Abstracts';
+import { InValidInitConfigError, LoadDocError } from '../Errors';
+import { GoogleSheetCredentials } from '../@types/googleSheet';
 
 export type GoogleSpreadSheetManagerParams = GoogleSheetCredentials;
 
@@ -41,7 +34,7 @@ export class GoogleSpreadSheetManager extends SheetManager {
     }
   }
 
-  /** 인증 인스턴스 생성 메서드 */
+  /** authentication */
   protected initAuthentication() {
     this.validateCredentials();
 
@@ -52,7 +45,7 @@ export class GoogleSpreadSheetManager extends SheetManager {
     });
   }
 
-  /** Document 로드 메서드 */
+  /** document loader */
   public async loadDoc(): Promise<GoogleSpreadsheet> {
     this.validateCredentials();
 
@@ -75,11 +68,3 @@ export class GoogleSpreadSheetManager extends SheetManager {
     console.log('healthCheck');
   }
 }
-
-/** 에러 스테이터스 맵 */
-export const sheetErrorStatusMap = new Map<CustomErrorConstructor, number>([
-  [InValidInitConfigError, 400],
-  [NoAuthClientError, 400],
-  [NoSheetError, 400],
-  [LoadDocError, 400],
-]);

@@ -1,15 +1,5 @@
-import { GoogleSpreadSheetManager } from './googleSpreadSheetManager';
-
-export interface GoogleSheetCredentials {
-  sheetId: string;
-  clientEmail: string;
-  privateKey: string;
-}
-
-export interface LocaleSettings {
-  supportedLocales: string[];
-  defaultLocale: string;
-}
+import { GoogleSheetCredentials, LocaleSettings } from '../@types/googleSheet';
+import { GoogleSpreadSheetManager } from '../SpreadSheetManager';
 
 export interface GoogleSheetExporterParams {
   googleSheetCredentials: GoogleSheetCredentials;
@@ -24,9 +14,6 @@ export async function googleSheetExporter(
   const googleSpreadSheetManager = new GoogleSpreadSheetManager(
     googleSheetCredentials
   );
-  const doc = await googleSpreadSheetManager.loadDoc();
-
-  console.log('doc is', doc);
 
   return googleSpreadSheetManager;
 }

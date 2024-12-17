@@ -95,7 +95,7 @@ importers:
 
   packages/configs/typescript-config: {}
 
-  packages/google-sheet-exporter:
+  packages/sheet-exporter:
     dependencies:
       google-auth-library:
         specifier: ^9.15.0
@@ -116,9 +116,9 @@ importers:
 
   packages/sheet-i18n:
     dependencies:
-      '@sheet-i18n/google-sheet-exporter':
+      '@sheet-i18n/sheet-exporter':
         specifier: workspace:*
-        version: link:../google-sheet-exporter
+        version: link:../sheet-exporter
     devDependencies:
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
