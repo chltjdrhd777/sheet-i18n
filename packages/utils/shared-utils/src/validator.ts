@@ -6,8 +6,8 @@ export function isNullish(value: unknown): value is null | undefined {
 }
 
 export function hasEmptyValueInObj(obj: Record<PropertyKey, any>): boolean {
-  return Object.values(obj).some((value) => isEmpty(value));
+  return isNullish(obj) || Object.values(obj).some((value) => isEmpty(value));
 }
 export function hasNullishValueInObj(obj: Record<PropertyKey, any>): boolean {
-  return Object.values(obj).some((value) => isNullish(value));
+  return isNullish(obj) || Object.values(obj).some((value) => isNullish(value));
 }
