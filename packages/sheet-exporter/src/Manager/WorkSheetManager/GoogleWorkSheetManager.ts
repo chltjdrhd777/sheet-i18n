@@ -32,8 +32,16 @@ export class GoogleWorkSheetManager extends WorkSheet {
   }
 
   /** get all work sheet on document */
-  public getManyWorkSheets(): GoogleSpreadsheetWorksheet[] {
-    return this.doc.sheetsByIndex;
+  public getManyWorkSheets(
+    ignoreSheets?: string[]
+  ): GoogleSpreadsheetWorksheet[] {
+    const sheets = this.doc.sheetsByIndex;
+
+    if (ignoreSheets) {
+      return sheets.filter((sheet) => !ignoreSheets.includes(sheet.title));
+    }
+
+    return sheets;
   }
 
   /** get specific workSheet */
