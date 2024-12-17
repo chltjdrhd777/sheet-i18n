@@ -1,11 +1,8 @@
-export class CustomError extends Error {
-  constructor(message: string = 'Axios Error') {
-    super(message);
-    this.name = this.constructor.name;
-  }
-}
+import { CustomError } from '@sheet-i18n/errors';
 
-export class InValidEnvError extends CustomError {}
+export class NoRequiredConfigError extends CustomError {}
+
+export class InValidInitConfigError extends CustomError {}
 export class NoAuthClientError extends CustomError {}
 export class LoadDocError extends CustomError {}
 

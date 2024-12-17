@@ -32,6 +32,8 @@
     "google-spreadsheet": "^4.1.4"
   },
   "devDependencies": {
+    "@sheet-i18n/shared-utils": "workspace:*",
+    "@sheet-i18n/errors": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

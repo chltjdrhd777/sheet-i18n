@@ -104,6 +104,12 @@ importers:
         specifier: ^4.1.4
         version: 4.1.4(google-auth-library@9.15.0)
     devDependencies:
+      '@sheet-i18n/errors':
+        specifier: workspace:*
+        version: link:../utils/errors
+      '@sheet-i18n/shared-utils':
+        specifier: workspace:*
+        version: link:../utils/shared-utils
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
         version: link:../configs/typescript-config
@@ -125,6 +131,12 @@ importers:
         version: 5.5.4
 
   packages/utils/errors:
+    devDependencies:
+      '@sheet-i18n/typescript-config':
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+
+  packages/utils/shared-utils:
     devDependencies:
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
