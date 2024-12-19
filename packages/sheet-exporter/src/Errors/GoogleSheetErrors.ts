@@ -1,6 +1,7 @@
 import { CustomError } from '@sheet-i18n/errors';
 
 // initiation error
+export class InValidPreRequisitesError extends CustomError {}
 export class NoRequiredConfigError extends CustomError {}
 export class InValidInitConfigError extends CustomError {}
 export class NoAuthClientError extends CustomError {}

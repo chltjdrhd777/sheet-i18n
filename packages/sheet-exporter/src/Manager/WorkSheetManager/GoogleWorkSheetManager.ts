@@ -6,14 +6,14 @@ import { validator } from '@sheet-i18n/shared-utils';
 
 import { WorkSheet } from '../../Abstracts';
 import { NoDocumentError, NoSheetError } from '../../Errors/GoogleSheetErrors';
-import { SheetTitle } from '../../@types/googleSheet';
+import { Locale, SheetTitle } from '../../@types/googleSheet';
 import { GoogleRowManager } from '../RowManager';
 import { GoogleCellManager } from '../CellManager';
-import { GoogleSheetExporterConfig } from '../../sheetExporter/googleSheetExporter';
+import { GoogleSheetExporterParams } from '../../sheetExporter/googleSheetExporter';
 
 interface WorkSheetManagerParams {
   doc: GoogleSpreadsheet;
-  googleSheetExporterConfig: GoogleSheetExporterConfig;
+  googleSheetExporterParams: GoogleSheetExporterParams;
 }
 
 type SheetRegistry = Map<
@@ -26,13 +26,13 @@ type SheetRegistry = Map<
 
 export class GoogleWorkSheetManager extends WorkSheet {
   private doc: GoogleSpreadsheet;
-  private googleSheetExporterConfig: GoogleSheetExporterConfig;
+  private googleSheetExporterParams: GoogleSheetExporterParams;
   private sheetRegistry: SheetRegistry = new Map();
 
-  constructor({ doc, googleSheetExporterConfig }: WorkSheetManagerParams) {
+  constructor({ doc, googleSheetExporterParams }: WorkSheetManagerParams) {
     super();
     this.doc = doc;
-    this.googleSheetExporterConfig = googleSheetExporterConfig;
+    this.googleSheetExporterParams = googleSheetExporterParams;
     this.init();
   }
 
@@ -50,7 +50,7 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
   /** get all work sheet on document */
   public getManyWorkSheets(): GoogleSpreadsheetWorksheet[] {
-    const { ignoredSheets } = this.googleSheetExporterConfig ?? {};
+    const { ignoredSheets } = this.googleSheetExporterParams ?? {};
     const sheets = this?.doc?.sheetsByIndex;
 
     if (validator.isNullish(sheets)) {
@@ -83,6 +83,7 @@ export class GoogleWorkSheetManager extends WorkSheet {
   public getSheetRegistry() {
     return this.sheetRegistry;
   }
+
   public setSheetRegistry(sheetRegistry: SheetRegistry) {
     this.sheetRegistry = sheetRegistry;
 
@@ -110,31 +111,59 @@ export class GoogleWorkSheetManager extends WorkSheet {
   }
 
   /** translation sheet json data */
-  public async getTranslationJsonData(sheets: GoogleSpreadsheetWorksheet[]) {
-    const jsonDataList = await Promise.all(
-      sheets.map((sheet) => this.getSheetJsonData(sheet))
+  public async getTranslationData(sheets: GoogleSpreadsheetWorksheet[]) {
+    const defaultLocale = this.googleSheetExporterParams.defaultLocale;
+    const translationDataMap = new Map<Locale, Record<SheetTitle, {}>>();
+    const sheetMetaDataList = await Promise.all(
+      sheets.map((sheet) => this.getSheetMetaData(sheet))
     );
 
-    console.log('jsondatalist is', jsonDataList);
+    sheetMetaDataList.forEach((sheetMetaData) => {
+      if (sheetMetaData === null) return;
+
+      const { sheetTitle, headers, rows } = sheetMetaData;
+
+      headers.forEach((lang) => {
+        const updatedLocaleDataInTranslationMap =
+          translationDataMap.get(lang) ?? {};
+
+        const updatedSheetData: Record<string, string> =
+          updatedLocaleDataInTranslationMap[sheetTitle] ?? {};
+
+        rows.forEach((row) => {
+          const defaultLocaleValue = row[defaultLocale];
+
+          if (defaultLocaleValue) {
+            updatedSheetData[defaultLocaleValue] = row[lang];
+          }
+        });
+
+        updatedLocaleDataInTranslationMap[sheetTitle] = updatedSheetData;
+
+        translationDataMap.set(lang, updatedLocaleDataInTranslationMap);
+      });
+    });
   }
 
-  public async getSheetJsonData(sheet: GoogleSpreadsheetWorksheet) {
-    const jsonData = {};
-
+  public async getSheetMetaData(sheet: GoogleSpreadsheetWorksheet) {
     const registry = this.sheetRegistry?.get(sheet.title);
 
-    if (!registry) return jsonData;
+    if (!registry) return null;
 
-    const headerRowNumber =
-      this.googleSheetExporterConfig?.headerRowCoordinates?.headerRowNumber;
+    const headerStartRowNumber =
+      this.googleSheetExporterParams?.headerStartRowNumber;
 
-    await registry.rowManager.loadRowsFromHeaderRowNumber(headerRowNumber);
+    await registry.rowManager.loadRowsFromHeaderRowNumber(headerStartRowNumber);
     const rows = await registry.rowManager.getManyRows();
     const headers = registry.rowManager.getHeaderValues();
+    const parsedRows = rows.map((row) => row.toObject());
 
-    console.log('rows is', rows);
-    console.log('headers is', headers);
+    console.log('parsedRows is', parsedRows, headers);
 
-    return {};
+    return {
+      sheetTitle: sheet.title,
+      headers,
+      rows: parsedRows,
+    };
   }
 }

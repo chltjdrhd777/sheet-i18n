@@ -54,8 +54,6 @@ export class GoogleCellManager extends Cell {
       endRowIndex: rowIndex + 1,
     });
 
-    console.log('sheet info is', this.sheet);
-
     return [];
   }
 

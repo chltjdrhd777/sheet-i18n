@@ -33,15 +33,17 @@ export class GoogleRowManager extends Row {
   }
 
   public getHeaderValues(): string[] {
-    return this?.sheet?.headerValues;
+    return (this?.sheet?.headerValues ?? []).filter(
+      (headerValue) => !validator.isEmpty(headerValue)
+    );
   }
 
-  public async loadRowsFromHeaderRowNumber(headerRowNumber?: RowNumber) {
+  public async loadRowsFromHeaderRowNumber(headerStartRowNumber?: RowNumber) {
     try {
-      await this?.sheet?.loadHeaderRow(headerRowNumber);
+      await this?.sheet?.loadHeaderRow(headerStartRowNumber);
     } catch {
       throw new LoadHeaderRowError(
-        'Failed to load header row. If your dataset does not start from the row number 1, please set "headerCoordinates" config first. The header coordinate of all sheet should be set in the same way.'
+        'Failed to load header row. If your dataset does not start from the row number 1, please set "headerCoordinates" config first. The header coordinates of all sheet should be set in the same way.'
       );
     }
   }
