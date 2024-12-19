@@ -12,9 +12,14 @@ export class NoSheetError extends CustomError {}
 // document error
 export class NoDocumentError extends CustomError {}
 
+// workSheet error
+export class NoWorkSheetRegistryError extends CustomError {}
+export class GetTranslationJsonDataError extends CustomError {}
+
 // row error
 export class GetManyRowsError extends CustomError {}
 export class GetRowError extends CustomError {}
+export class LoadHeaderRowError extends CustomError {}
 export class OutOfRowBoundsError extends CustomError {}
 
 // cell error

@@ -6,7 +6,7 @@ import {
   LoadCellsError,
   NoSheetError,
   OutOfRowBoundsError,
-} from '../../Errors';
+} from '../../Errors/GoogleSheetErrors';
 
 export class GoogleCellManager extends Cell {
   private sheet: GoogleSpreadsheetWorksheet;
@@ -14,6 +14,7 @@ export class GoogleCellManager extends Cell {
   constructor(sheet: GoogleSpreadsheetWorksheet) {
     super();
     this.sheet = sheet;
+    this.init();
   }
 
   protected validate() {

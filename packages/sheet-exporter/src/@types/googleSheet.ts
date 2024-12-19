@@ -8,3 +8,14 @@ export interface LocaleSettings {
   supportedLocales: string[];
   defaultLocale: string;
 }
+
+// Sheet
+export type SheetTitle = string;
+export type ColumnIndex = number;
+export type ColumnAddress = string;
+export type RowNumber = number;
+
+export type headerRowCoordinates = {
+  headerRowNumber: RowNumber;
+  headerStartColumnIndex: ColumnIndex;
+};

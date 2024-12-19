@@ -3,6 +3,11 @@ abstract class Contract {
   protected abstract init(...args: any): any;
 }
 
+export abstract class SheetConfig extends Contract {
+  protected abstract validate(...args: any): any;
+  protected abstract init(...args: any): any;
+}
+
 export abstract class SheetManager extends Contract {}
 
 export abstract class WorkSheet extends Contract {

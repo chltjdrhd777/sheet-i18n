@@ -3,7 +3,10 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { validator } from '@sheet-i18n/shared-utils';
 
 import { SheetManager } from '../../Abstracts';
-import { InValidInitConfigError, LoadDocError } from '../../Errors';
+import {
+  InValidInitConfigError,
+  LoadDocError,
+} from '../../Errors/GoogleSheetErrors';
 import { GoogleSheetCredentials } from '../../@types/googleSheet';
 
 export type GoogleSpreadSheetManagerParams = GoogleSheetCredentials;

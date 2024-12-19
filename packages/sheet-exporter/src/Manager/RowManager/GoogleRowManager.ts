@@ -5,7 +5,13 @@ import {
 import { validator } from '@sheet-i18n/shared-utils';
 
 import { Row } from '../../Abstracts';
-import { GetManyRowsError, GetRowError, NoSheetError } from '../../Errors';
+import {
+  GetManyRowsError,
+  GetRowError,
+  LoadHeaderRowError,
+  NoSheetError,
+} from '../../Errors/GoogleSheetErrors';
+import { RowNumber } from '../../@types/googleSheet';
 
 export class GoogleRowManager extends Row {
   private sheet: GoogleSpreadsheetWorksheet;
@@ -13,6 +19,7 @@ export class GoogleRowManager extends Row {
   constructor(sheet: GoogleSpreadsheetWorksheet) {
     super();
     this.sheet = sheet;
+    this.init();
   }
 
   protected validate() {
@@ -25,12 +32,24 @@ export class GoogleRowManager extends Row {
     this.validate();
   }
 
+  public getHeaderValues(): string[] {
+    return this?.sheet?.headerValues;
+  }
+
+  public async loadRowsFromHeaderRowNumber(headerRowNumber?: RowNumber) {
+    try {
+      await this?.sheet?.loadHeaderRow(headerRowNumber);
+    } catch {
+      throw new LoadHeaderRowError(
+        'Failed to load header row. If your dataset does not start from the row number 1, please set "headerCoordinates" config first. The header coordinate of all sheet should be set in the same way.'
+      );
+    }
+  }
+
   public async getManyRows(options?: {
     offset?: number;
     limit?: number;
   }): Promise<GoogleSpreadsheetRow[]> {
-    this.validate();
-
     try {
       return await this?.sheet?.getRows(options);
     } catch {

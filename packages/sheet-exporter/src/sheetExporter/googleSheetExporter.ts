@@ -1,26 +1,39 @@
-import { GoogleSheetCredentials, LocaleSettings } from '../@types/googleSheet';
+import {
+  GoogleSheetCredentials,
+  headerRowCoordinates,
+} from '../@types/googleSheet';
 import { GoogleSpreadSheetManager } from '../Manager/SpreadSheetManager';
 import { GoogleWorkSheetManager } from '../Manager/WorkSheetManager';
 
-export interface GoogleSheetExporterParams {
+export interface GoogleSheetExporterConfig {
+  headerRowCoordinates?: headerRowCoordinates;
+  ignoredSheets?: string[];
+}
+export interface GoogleSheetExporterParams extends GoogleSheetExporterConfig {
   credentials: GoogleSheetCredentials;
-  ignoreSheets?: string[];
-  localeSettings?: LocaleSettings;
 }
 
 export async function googleSheetExporter(
   googleSheetExporterParams: GoogleSheetExporterParams
 ) {
-  const { credentials, ignoreSheets, localeSettings } =
+  const { credentials, ...googleSheetExporterConfig } =
     googleSheetExporterParams;
 
+  // init document
   const googleSpreadSheetManager = new GoogleSpreadSheetManager(credentials);
   const doc = await googleSpreadSheetManager.loadDoc();
 
-  const workSheetManager = new GoogleWorkSheetManager({ doc });
-  const allSheets = workSheetManager.getManyWorkSheets(ignoreSheets);
+  // init workSheetManager
+  const workSheetManager = new GoogleWorkSheetManager({
+    doc,
+    googleSheetExporterConfig,
+  });
+  const allSheets = workSheetManager.getManyWorkSheets();
 
-  console.log('all sheets is', allSheets);
+  workSheetManager.initSheetRegistry(allSheets);
+
+  // test////////////////////////
+  await workSheetManager.getTranslationJsonData(allSheets);
 
   return googleSpreadSheetManager;
 }
