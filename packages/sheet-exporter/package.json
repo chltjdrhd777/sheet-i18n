@@ -1,13 +1,14 @@
 {
   "name": "@sheet-i18n/sheet-exporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "sheet exporter using sheet api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "changelog": "standard-version"
   },
   "exports": {
     ".": {
