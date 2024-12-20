@@ -13,6 +13,7 @@ export abstract class SheetManager extends Contract {}
 export abstract class WorkSheet extends Contract {
   public abstract getManyWorkSheets(...args: any): any;
   public abstract getWorksheet(...args: any): any;
+  public abstract exportSheet(...args: any): any;
 }
 
 export abstract class Row extends Contract {

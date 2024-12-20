@@ -49,8 +49,8 @@ export async function googleSheetExporter(
 
   workSheetManager.initSheetRegistry(allSheets);
 
-  // test////////////////////////
-  await workSheetManager.getTranslationData(allSheets);
-
-  return googleSpreadSheetManager;
+  // expose members
+  return {
+    exportSheet: workSheetManager.exportSheet,
+  };
 }

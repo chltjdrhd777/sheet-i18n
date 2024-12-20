@@ -30,3 +30,6 @@ export class LoadCellsError extends CustomError {}
 
 export class InvalidDefaultLocaleHeaderError extends CustomError {}
 export class InvalidHeadersError extends CustomError {}
+
+// export error
+export class ExportSheetsError extends CustomError {}

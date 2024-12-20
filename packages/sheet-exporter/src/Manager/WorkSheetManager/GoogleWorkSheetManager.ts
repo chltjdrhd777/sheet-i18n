@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 import {
   GoogleSpreadsheet,
   GoogleSpreadsheetWorksheet,
@@ -5,7 +8,11 @@ import {
 import { validator } from '@sheet-i18n/shared-utils';
 
 import { WorkSheet } from '../../Abstracts';
-import { NoDocumentError, NoSheetError } from '../../Errors/GoogleSheetErrors';
+import {
+  ExportSheetsError,
+  NoDocumentError,
+  NoSheetError,
+} from '../../Errors/GoogleSheetErrors';
 import { Locale, SheetTitle } from '../../@types/googleSheet';
 import { GoogleRowManager } from '../RowManager';
 import { GoogleCellManager } from '../CellManager';
@@ -111,7 +118,51 @@ export class GoogleWorkSheetManager extends WorkSheet {
   }
 
   /** translation sheet json data */
-  public async getTranslationData(sheets: GoogleSpreadsheetWorksheet[]) {
+  public exportSheet = async () => {
+    const isServer = typeof window === 'undefined';
+
+    if (!isServer) {
+      throw new ExportSheetsError(
+        'Export sheets is only available in node.js environment.'
+      );
+    }
+
+    const defaultExportPath = path.resolve(process.cwd());
+
+    const translationDataMap = await this.getTranslationDataMap();
+
+    const exportPath =
+      this.googleSheetExporterParams?.exportPath ?? defaultExportPath;
+
+    if (validator.isNullish(exportPath) || !fs.existsSync(exportPath)) {
+      throw new ExportSheetsError(
+        `Invalid or missing export path: ${exportPath} Please check the export path is valid.(default is a current working directory)`
+      );
+    }
+
+    const writePromises = Array.from(translationDataMap.entries()).map(
+      async ([lang, translationData]) => {
+        const stringified = JSON.stringify(translationData, null, 2);
+        const fileName = `${lang}.json`;
+        const filePath = path.resolve(exportPath, fileName);
+
+        try {
+          await fs.promises.writeFile(filePath, stringified);
+        } catch {
+          throw new ExportSheetsError(`Failed to write file to: ${filePath}`);
+        }
+      }
+    );
+
+    try {
+      await Promise.all(writePromises);
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  public async getTranslationDataMap() {
+    const sheets = this.getManyWorkSheets();
     const defaultLocale = this.googleSheetExporterParams.defaultLocale;
     const translationDataMap = new Map<Locale, Record<SheetTitle, {}>>();
     const sheetMetaDataList = await Promise.all(
@@ -124,25 +175,24 @@ export class GoogleWorkSheetManager extends WorkSheet {
       const { sheetTitle, headers, rows } = sheetMetaData;
 
       headers.forEach((lang) => {
-        const updatedLocaleDataInTranslationMap =
-          translationDataMap.get(lang) ?? {};
-
-        const updatedSheetData: Record<string, string> =
-          updatedLocaleDataInTranslationMap[sheetTitle] ?? {};
+        const translationData = translationDataMap.get(lang) ?? {};
+        const sheetData = translationData[sheetTitle] ?? {};
 
         rows.forEach((row) => {
           const defaultLocaleValue = row[defaultLocale];
 
           if (defaultLocaleValue) {
-            updatedSheetData[defaultLocaleValue] = row[lang];
+            (sheetData as Record<string, any>)[defaultLocaleValue] = row[lang];
           }
         });
 
-        updatedLocaleDataInTranslationMap[sheetTitle] = updatedSheetData;
+        translationData[sheetTitle] = sheetData;
 
-        translationDataMap.set(lang, updatedLocaleDataInTranslationMap);
+        translationDataMap.set(lang, translationData);
       });
     });
+
+    return translationDataMap;
   }
 
   public async getSheetMetaData(sheet: GoogleSpreadsheetWorksheet) {
@@ -157,8 +207,6 @@ export class GoogleWorkSheetManager extends WorkSheet {
     const rows = await registry.rowManager.getManyRows();
     const headers = registry.rowManager.getHeaderValues();
     const parsedRows = rows.map((row) => row.toObject());
-
-    console.log('parsedRows is', parsedRows, headers);
 
     return {
       sheetTitle: sheet.title,
