@@ -1,25 +1,18 @@
 {
   "name": "@sheet-i18n/errors",
   "version": "0.1.0",
-  "description": "Utility functions for string manipulation",
+  "description": "custom errors to handle exceptions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --watch"
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
   },
   "keywords": [
     "sheet-i18n",
     "utils",
-    "string-utils"
+    "errors"
   ],
   "author": {
     "name": "devAnderson",

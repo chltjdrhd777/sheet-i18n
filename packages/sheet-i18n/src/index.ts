@@ -1,1 +1,3 @@
-export { GoogleSheetManager } from '@sheet-i18n/google-sheet-exporter';
+import { googleSheetExporter } from '@sheet-i18n/sheet-exporter';
+
+export { googleSheetExporter };

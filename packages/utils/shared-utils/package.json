@@ -1,7 +1,7 @@
 {
-  "name": "@sheet-i18n/{{dashCase utilName}}",
+  "name": "@sheet-i18n/shared-utils",
   "version": "0.1.0",
-  "description": "{{description}}",
+  "description": "commonly used pure functions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
