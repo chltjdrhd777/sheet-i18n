@@ -51,6 +51,7 @@ export async function googleSheetExporter(
 
   // expose members
   return {
-    exportSheet: workSheetManager.exportSheet,
+    getTranslations: workSheetManager.getTranslations,
+    exportTranslations: workSheetManager.exportTranslations,
   };
 }
