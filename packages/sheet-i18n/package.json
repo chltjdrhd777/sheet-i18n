@@ -5,17 +5,17 @@
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "build": "tsup src/index.ts src/exporter/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts src/exporter/index.ts --format esm,cjs --dts --watch"
   },
   "exports": {
-    ".": {
+    "/exporter": {
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     }
   },
   "dependencies": {
-    "@sheet-i18n/sheet-exporter": "workspace:*"
+    "@sheet-i18n/exporter": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.0.0",

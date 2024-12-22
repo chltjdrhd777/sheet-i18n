@@ -30,7 +30,15 @@ export default [
     )
   ),
   {
-    files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
+    files: [
+      '**/*.ts',
+      '**/*.tsx',
+      '**/*.js',
+      '**/*.jsx',
+      '**/*.mjs',
+      '**/*.cjs',
+    ],
+    ignores: ['dist/**/*', 'node_modules/**/*', 'build/**/*', 'out/**/*'],
     plugins: {
       react: fixupPluginRules(react),
       'unused-imports': unusedImports,
