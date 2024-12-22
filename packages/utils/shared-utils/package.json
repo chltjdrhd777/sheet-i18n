@@ -1,7 +1,7 @@
 {
-  "name": "@sheet-i18n/errors",
+  "name": "@sheet-i18n/shared-utils",
   "version": "0.1.0",
-  "description": "custom errors to handle exceptions",
+  "description": "commonly used pure functions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -9,11 +9,13 @@
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
   },
-  "keywords": [
-    "sheet-i18n",
-    "utils",
-    "errors"
-  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "keywords": [],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",

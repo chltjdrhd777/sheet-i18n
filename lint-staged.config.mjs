@@ -17,7 +17,6 @@ export default {
   '**/*.{js,ts,jsx,tsx}': async (files) => {
     const filesToLint = await getIgnoredFiles(files);
 
-    // return [`eslint --max-warnings=0 --fix ${filesToLint}`];
     return [`eslint --fix ${filesToLint}`];
   },
   '**/*.css': async (files) => {

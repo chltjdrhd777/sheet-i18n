@@ -1,13 +1,14 @@
 {
-  "name": "@sheet-i18n/google-sheet-exporter",
-  "version": "0.1.0",
-  "description": "sheet export using google sheets api",
+  "name": "@sheet-i18n/exporter",
+  "version": "0.1.1",
+  "description": "sheet exporter using sheet api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "changelog": "standard-version"
   },
   "exports": {
     ".": {
@@ -17,7 +18,7 @@
   },
   "keywords": [
     "sheet-i18n",
-    "google-spreadsheet",
+    "spreadsheet",
     "i18n",
     "translation"
   ],
@@ -32,6 +33,8 @@
     "google-spreadsheet": "^4.1.4"
   },
   "devDependencies": {
+    "@sheet-i18n/shared-utils": "workspace:*",
+    "@sheet-i18n/errors": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*"
   }
 }

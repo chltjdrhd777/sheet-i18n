@@ -1,0 +1,10 @@
+{
+  "extends": "@sheet-i18n/typescript-config/node.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "typeRoots": ["./node_modules/@types", "./src/@types/common.d.ts"]
+}
