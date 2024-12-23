@@ -1,21 +1,35 @@
 {
   "name": "sheet-i18n",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "changelog": "standard-version",
+    "publish:npm": "npm publish"
   },
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+    "/exporter": {
+      "require": "./dist/exporter/index.js",
+      "import": "./dist/exporter/index.mjs"
     }
   },
+  "keywords": [
+    "sheet-i18n",
+    "spreadsheet",
+    "i18n",
+    "translation"
+  ],
+  "author": {
+    "name": "devAnderson",
+    "email": "chltjdrhd777@gmail.com",
+    "url": "https://github.com/chltjdrhd777"
+  },
+  "license": "ISC",
   "dependencies": {
-    "@sheet-i18n/sheet-exporter": "workspace:*"
+    "@sheet-i18n/exporter": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.0.0",

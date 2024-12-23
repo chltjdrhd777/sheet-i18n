@@ -9,7 +9,7 @@ import { validator } from '@sheet-i18n/shared-utils';
 
 import { WorkSheet } from '../../Abstracts';
 import {
-  ExportSheetsError,
+  ExportTranslationsError,
   NoDocumentError,
   NoSheetError,
 } from '../../Errors/GoogleSheetErrors';
@@ -38,8 +38,10 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
   constructor({ doc, googleSheetExporterParams }: WorkSheetManagerParams) {
     super();
+
     this.doc = doc;
     this.googleSheetExporterParams = googleSheetExporterParams;
+
     this.init();
   }
 
@@ -53,6 +55,7 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
   protected init() {
     this.validate();
+    this.initSheetRegistry();
   }
 
   /** get all work sheet on document */
@@ -90,13 +93,11 @@ export class GoogleWorkSheetManager extends WorkSheet {
   public getSheetRegistry() {
     return this.sheetRegistry;
   }
-
   public setSheetRegistry(sheetRegistry: SheetRegistry) {
     this.sheetRegistry = sheetRegistry;
 
     return this.sheetRegistry;
   }
-
   public registerSheet(
     sheetRegistry: SheetRegistry,
     sheet: GoogleSpreadsheetWorksheet
@@ -108,8 +109,9 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
     return sheetRegistry;
   }
+  public initSheetRegistry() {
+    const sheets = this.getManyWorkSheets();
 
-  public initSheetRegistry(sheets: GoogleSpreadsheetWorksheet[] = []) {
     const sheetRegistry: SheetRegistry = this.getSheetRegistry();
 
     sheets.forEach((sheet) => this.registerSheet(sheetRegistry, sheet));
@@ -117,12 +119,26 @@ export class GoogleWorkSheetManager extends WorkSheet {
     this.setSheetRegistry(sheetRegistry);
   }
 
-  /** translation sheet json data */
-  public exportSheet = async () => {
+  /** handlers for sheet json data */
+  public getTranslations = async () => {
     const isServer = typeof window === 'undefined';
 
     if (!isServer) {
-      throw new ExportSheetsError(
+      throw new ExportTranslationsError(
+        'Export sheets is only available in node.js environment.'
+      );
+    }
+
+    const translationDataMap = await this.getTranslationDataMap();
+
+    return Object.fromEntries(translationDataMap);
+  };
+
+  public exportTranslations = async () => {
+    const isServer = typeof window === 'undefined';
+
+    if (!isServer) {
+      throw new ExportTranslationsError(
         'Export sheets is only available in node.js environment.'
       );
     }
@@ -135,7 +151,7 @@ export class GoogleWorkSheetManager extends WorkSheet {
       this.googleSheetExporterParams?.exportPath ?? defaultExportPath;
 
     if (validator.isNullish(exportPath) || !fs.existsSync(exportPath)) {
-      throw new ExportSheetsError(
+      throw new ExportTranslationsError(
         `Invalid or missing export path: ${exportPath} Please check the export path is valid.(default is a current working directory)`
       );
     }
@@ -149,7 +165,9 @@ export class GoogleWorkSheetManager extends WorkSheet {
         try {
           await fs.promises.writeFile(filePath, stringified);
         } catch {
-          throw new ExportSheetsError(`Failed to write file to: ${filePath}`);
+          throw new ExportTranslationsError(
+            `Failed to write file to: ${filePath}`
+          );
         }
       }
     );
@@ -174,10 +192,19 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
       const { sheetTitle, headers, rows } = sheetMetaData;
 
+      if (!headers.includes(defaultLocale)) {
+        console.log(
+          `defaultLocale "${defaultLocale}" is not found in "${sheetTitle}" sheet headerValues, ignored...`
+        );
+
+        return;
+      }
+
       headers.forEach((lang) => {
         const translationData = translationDataMap.get(lang) ?? {};
         const sheetData = translationData[sheetTitle] ?? {};
 
+        // rows = Array<locale in headerValue, cellValue>
         rows.forEach((row) => {
           const defaultLocaleValue = row[defaultLocale];
 
