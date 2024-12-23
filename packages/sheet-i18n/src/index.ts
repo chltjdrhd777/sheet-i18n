@@ -1,1 +1,1 @@
-export * as exporter from './exporter';
+export * from '@sheet-i18n/exporter';

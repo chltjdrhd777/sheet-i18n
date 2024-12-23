@@ -1,8 +1,8 @@
 {
   "name": "sheet-i18n",
-  "version": "0.1.10",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "version": "0.1.15",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
@@ -11,11 +11,15 @@
     "publish:npm": "npm publish"
   },
   "exports": {
-    "/exporter": {
-      "require": "./dist/exporter/index.js",
-      "import": "./dist/exporter/index.mjs"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [
     "sheet-i18n",
     "spreadsheet",
