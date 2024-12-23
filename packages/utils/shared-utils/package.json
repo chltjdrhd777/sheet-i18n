@@ -10,6 +10,9 @@
     "dev": "tsup --watch",
     "publish:npm": "npm publish"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "require": "./dist/index.js",

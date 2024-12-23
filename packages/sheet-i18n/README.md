@@ -125,9 +125,11 @@ If you call the `exportTranslations` function, it will update or create JSON fil
 
 ### API Documentation 📚
 
-You can refer to the Google Sheets API for integration details and configuration. The following link provides extensive documentation on how to interact with Google Sheets API for accessing your spreadsheet data:
+This package provides a streamlined way to export data using sheets API. It is designed to simplify the integration of spreadsheet data into your applications, particularly for translation workflows and internationalization (i18n).
 
-[Google Sheets API Documentation](https://developers.google.com/sheets/api)
+[Google Sheets API Documentation](https://developers.google.com/sheets/api)<br>
+[Google Auth Library](https://www.npmjs.com/package/google-auth-library)<br>
+[Google Spreadsheet](https://www.npmjs.com/package/google-spreadsheet)
 
 ### Exporting Data Format 🗂️
 
