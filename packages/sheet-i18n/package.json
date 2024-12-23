@@ -1,12 +1,13 @@
 {
   "name": "sheet-i18n",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "changelog": "standard-version",
     "publish:npm": "npm publish"
   },
   "exports": {

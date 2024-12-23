@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/chltjdrhd777/sheet-i18n/compare/v0.1.1...v0.1.2) (2024-12-23)
+
+
+### Features
+
+* add changelog script to track changes ([9a07986](https://github.com/chltjdrhd777/sheet-i18n/commit/9a07986b0da9a3ffaa702888284df5059c64f776))
+
+
+### Bug Fixes
+
+* change vscode eslint setting to format ([2c7513d](https://github.com/chltjdrhd777/sheet-i18n/commit/2c7513d6c37f57e9cf90fd5868ab40d61cda8366))
+
 ### 0.1.1 (2024-12-20)
 
 ### Features
