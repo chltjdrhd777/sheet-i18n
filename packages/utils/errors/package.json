@@ -6,8 +6,9 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "publish:npm": "npm publish"
   },
   "keywords": [
     "sheet-i18n",
@@ -20,7 +21,6 @@
     "url": "https://github.com/chltjdrhd777"
   },
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@sheet-i18n/typescript-config": "workspace:*"
   }

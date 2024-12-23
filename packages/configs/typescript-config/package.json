@@ -1,11 +1,18 @@
 {
   "name": "@sheet-i18n/typescript-config",
   "version": "0.1.0",
-  "private": true,
   "license": "MIT",
+  "scripts": {
+    "publish:npm": "npm publish"
+  },
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "base.json",
+    "node.json",
+    "react.json"
+  ],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",
