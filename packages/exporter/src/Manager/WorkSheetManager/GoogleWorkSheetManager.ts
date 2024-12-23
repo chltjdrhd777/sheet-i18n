@@ -38,8 +38,10 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
   constructor({ doc, googleSheetExporterParams }: WorkSheetManagerParams) {
     super();
+
     this.doc = doc;
     this.googleSheetExporterParams = googleSheetExporterParams;
+
     this.init();
   }
 
@@ -53,6 +55,7 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
   protected init() {
     this.validate();
+    this.initSheetRegistry();
   }
 
   /** get all work sheet on document */
@@ -90,13 +93,11 @@ export class GoogleWorkSheetManager extends WorkSheet {
   public getSheetRegistry() {
     return this.sheetRegistry;
   }
-
   public setSheetRegistry(sheetRegistry: SheetRegistry) {
     this.sheetRegistry = sheetRegistry;
 
     return this.sheetRegistry;
   }
-
   public registerSheet(
     sheetRegistry: SheetRegistry,
     sheet: GoogleSpreadsheetWorksheet
@@ -108,8 +109,9 @@ export class GoogleWorkSheetManager extends WorkSheet {
 
     return sheetRegistry;
   }
+  public initSheetRegistry() {
+    const sheets = this.getManyWorkSheets();
 
-  public initSheetRegistry(sheets: GoogleSpreadsheetWorksheet[] = []) {
     const sheetRegistry: SheetRegistry = this.getSheetRegistry();
 
     sheets.forEach((sheet) => this.registerSheet(sheetRegistry, sheet));

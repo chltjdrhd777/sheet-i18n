@@ -3,7 +3,6 @@ import { validator } from '@sheet-i18n/shared-utils';
 import { GoogleSheetCredentials, RowNumber } from '../@types/googleSheet';
 import { GoogleSpreadSheetManager } from '../Manager/SpreadSheetManager';
 import { GoogleWorkSheetManager } from '../Manager/WorkSheetManager';
-import { InValidPreRequisitesError } from '../Errors/GoogleSheetErrors';
 
 export interface GoogleSheetExporterPreRequisites {
   credentials: GoogleSheetCredentials;
@@ -24,30 +23,23 @@ export interface GoogleSheetExporterParams
 export async function googleSheetExporter(
   googleSheetExporterParams: GoogleSheetExporterParams
 ) {
-  const { credentials, defaultLocale } = googleSheetExporterParams;
-  const preRequisites: GoogleSheetExporterPreRequisites = {
-    credentials,
-    defaultLocale,
-  };
+  // prerequisites: validate params
+  validator.checkPrerequisiteParams(googleSheetExporterParams, [
+    'credentials',
+    'defaultLocale',
+  ]);
 
-  if (validator.hasInvalidValuePrerequisites(preRequisites)) {
-    throw new InValidPreRequisitesError(
-      `Please set the valid requisites first: ${Object.entries(preRequisites).join(', ')}`
-    );
-  }
-
-  // init document
-  const googleSpreadSheetManager = new GoogleSpreadSheetManager(credentials);
+  // 1. init document
+  const googleSpreadSheetManager = new GoogleSpreadSheetManager(
+    googleSheetExporterParams.credentials
+  );
   const doc = await googleSpreadSheetManager.loadDoc();
 
-  // init workSheetManager
+  // 2. init workSheetManager
   const workSheetManager = new GoogleWorkSheetManager({
     doc,
     googleSheetExporterParams,
   });
-  const allSheets = workSheetManager.getManyWorkSheets();
-
-  workSheetManager.initSheetRegistry(allSheets);
 
   // expose members
   return {
