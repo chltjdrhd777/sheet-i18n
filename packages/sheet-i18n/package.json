@@ -6,14 +6,27 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "publish:npm": "npm publish"
   },
   "exports": {
     "/exporter": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/exporter/index.js",
+      "import": "./dist/exporter/index.mjs"
     }
   },
+  "keywords": [
+    "sheet-i18n",
+    "spreadsheet",
+    "i18n",
+    "translation"
+  ],
+  "author": {
+    "name": "devAnderson",
+    "email": "chltjdrhd777@gmail.com",
+    "url": "https://github.com/chltjdrhd777"
+  },
+  "license": "ISC",
   "dependencies": {
     "@sheet-i18n/exporter": "workspace:*"
   },
