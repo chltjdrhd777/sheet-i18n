@@ -8,6 +8,8 @@
     "test": "vitest",
     "plop": "plop",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "versioning": "pnpm changeset version --since=origin/feature",
+    "publish:pnpm": "turbo run build &&pnpm publish -r",
     "prepare": "husky"
   },
   "devDependencies": {

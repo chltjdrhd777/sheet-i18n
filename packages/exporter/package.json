@@ -1,24 +1,25 @@
 {
   "name": "@sheet-i18n/exporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "sheet exporter using sheet api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "changelog": "standard-version",
-    "publish:npm": "npm publish"
+    "dev": "tsup --watch"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "files": [
+    "dist/**/*"
+  ],
   "exports": {
     ".": {
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "sheet-i18n",

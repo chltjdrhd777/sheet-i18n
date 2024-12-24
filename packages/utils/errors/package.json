@@ -1,14 +1,22 @@
 {
   "name": "@sheet-i18n/errors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "custom errors to handle exceptions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "publish:npm": "npm publish"
+    "dev": "tsup --watch"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
   },
   "publishConfig": {
     "access": "public"

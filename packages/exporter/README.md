@@ -1,44 +1,29 @@
-# @sheet-i18n/shared-utils
+# @sheet-i18n/exporter
 
-A collection of commonly used pure functions for the `sheet-i18n` ecosystem. This package provides utility functions that can be reused across different projects.
+A core logic library for exporting data using the Google Sheets API. This package is designed to simplify the interaction with Google Sheets for i18n and translation workflows.
 
 ## Installation
 
 To install this package, use your preferred package manager:
 
 ```bash
-npm install @sheet-i18n/shared-utils
+npm install @sheet-i18n/exporter
 # or
-yarn add @sheet-i18n/shared-utils
+yarn add @sheet-i18n/exporter
 # or
-pnpm add @sheet-i18n/shared-utils
-```
-
-## Usage
-
-This package provides various utility functions. Below is an example of how to use it:
-
-```typescript
-import { isNullish } from '@sheet-i18n/shared-utils';
-
-const target = null;
-
-if (isNullish(target)) {
-  console.log('target is nullish');
-}
+pnpm add @sheet-i18n/exporter
 ```
 
 ## Features
 
-- Reusable pure functions.
-- Lightweight and efficient.
-- Integrates seamlessly with other `@sheet-i18n` packages.
+- Easy integration with Google Sheets API.
+- Supports exporting data for translation and i18n workflows.
+- Works seamlessly with other `@sheet-i18n` packages.
 
 ## Scripts
 
 - **build**: Builds the library using `tsup`.
 - **dev**: Watches for changes and rebuilds during development.
-- **publish:npm**: Publishes the package to npm.
 
 ## Files Included
 
@@ -55,8 +40,15 @@ The package provides the following exports:
 - **CommonJS**: `./dist/index.js`
 - **ES Module**: `./dist/index.mjs`
 
+## Dependencies
+
+- **google-auth-library**: Authentication library for Google APIs.
+- **google-spreadsheet**: Library for working with Google Sheets.
+
 ## Development Dependencies
 
+- **@sheet-i18n/shared-utils**: Shared utility functions.
+- **@sheet-i18n/errors**: Error handling utilities.
 - **@sheet-i18n/typescript-config**: Shared TypeScript configuration presets.
 
 ## Author
