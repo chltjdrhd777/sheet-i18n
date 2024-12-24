@@ -9,11 +9,17 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
+  files: [
+    "dist/**/*"
+  ],
   "exports": {
     ".": {
       "require": "./dist/index.js",
       "import": "./dist/index.mjs"
     }
+  },
+  publishConfig: {
+    "access": "public"
   },
   "keywords": [],
   "author": {
