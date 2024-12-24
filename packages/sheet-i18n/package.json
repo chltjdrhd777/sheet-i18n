@@ -6,20 +6,17 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "changelog": "standard-version",
-    "publish:npm": "npm publish"
-  },
-  "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    }
+    "dev": "tsup --watch"
   },
   "files": [
     "dist/**/*"
   ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "keywords": [
     "sheet-i18n",
     "spreadsheet",
