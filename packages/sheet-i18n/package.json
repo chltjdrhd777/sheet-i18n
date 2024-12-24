@@ -1,6 +1,6 @@
 {
   "name": "sheet-i18n",
-  "version": "0.1.16",
+  "version": "0.2.1",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

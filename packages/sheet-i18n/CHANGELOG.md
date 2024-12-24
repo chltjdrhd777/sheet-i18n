@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- update README.md on all pacakges
+
+### Patch Changes
+
+- Updated dependencies
+  - @sheet-i18n/exporter@0.2.0
+
 ## 0.1.16
 
 ### Patch Changes
