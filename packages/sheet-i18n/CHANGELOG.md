@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+### Patch Changes
+
+- change types filed position
+
 ## 0.2.0
 
 ### Minor Changes
