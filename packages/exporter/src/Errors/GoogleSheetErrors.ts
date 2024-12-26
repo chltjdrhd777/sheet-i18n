@@ -22,6 +22,7 @@ export class GetManyRowsError extends CustomError {}
 export class GetRowError extends CustomError {}
 export class LoadHeaderRowError extends CustomError {}
 export class OutOfRowBoundsError extends CustomError {}
+export class FailedToAddRowsError extends CustomError {}
 
 // cell error
 export class getManyCellsError extends CustomError {}

@@ -6,12 +6,13 @@ import { validator } from '@sheet-i18n/shared-utils';
 
 import { Row } from '../../Abstracts';
 import {
+  FailedToAddRowsError,
   GetManyRowsError,
   GetRowError,
   LoadHeaderRowError,
   NoSheetError,
 } from '../../Errors/GoogleSheetErrors';
-import { RowNumber } from '../../@types/googleSheet';
+import { CellValue, Locale, RowNumber } from '../../@types/googleSheet';
 
 export class GoogleRowManager extends Row {
   private sheet: GoogleSpreadsheetWorksheet;
@@ -69,6 +70,16 @@ export class GoogleRowManager extends Row {
     } catch {
       throw new GetRowError(
         'Failed to get row from sheet. Please check your configurations first.'
+      );
+    }
+  }
+
+  public async addRows(dataSet: Array<{ [key: Locale]: CellValue }>) {
+    try {
+      await this?.sheet?.addRows(dataSet);
+    } catch {
+      throw new FailedToAddRowsError(
+        `Failed to add rows to sheet: ${this.sheet?.title}`
       );
     }
   }

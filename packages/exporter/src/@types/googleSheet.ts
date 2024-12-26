@@ -14,4 +14,5 @@ export type SheetTitle = string;
 export type ColumnIndex = number;
 export type ColumnAddress = string;
 export type RowNumber = number;
+export type CellValue = string;
 export type Locale = string;

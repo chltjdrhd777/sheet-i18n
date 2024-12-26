@@ -45,5 +45,6 @@ export async function googleSheetExporter(
   return {
     getTranslations: workSheetManager.getTranslations,
     exportTranslations: workSheetManager.exportTranslations,
+    updateSheet: workSheetManager.updateSheet,
   };
 }

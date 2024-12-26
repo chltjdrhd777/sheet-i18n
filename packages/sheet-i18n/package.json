@@ -8,6 +8,9 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
+  "bin": {
+    "sheet-i18n": "./dist/cli/index.js"
+  },
   "files": [
     "dist/**/*"
   ],
@@ -36,11 +39,13 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@sheet-i18n/exporter": "workspace:*"
+    "@sheet-i18n/exporter": "workspace:*",
+    "inquirer": "^12.3.0",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
+    "@sheet-i18n/typescript-config": "workspace:*",
     "tsup": "^6.0.0",
-    "typescript": "^5.0.0",
-    "@sheet-i18n/typescript-config": "workspace:*"
+    "typescript": "^5.0.0"
   }
 }

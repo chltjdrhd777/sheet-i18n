@@ -5,5 +5,6 @@ export default defineConfig({
   entry: ['src/index.ts'],
   outDir: 'dist',
   format: ['cjs', 'esm'],
+  external: ['@sheet-i18n/shared-utils', '@sheet-i18n/errors'],
   dts: true,
 });

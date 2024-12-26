@@ -13,7 +13,7 @@ import {
   NoDocumentError,
   NoSheetError,
 } from '../../Errors/GoogleSheetErrors';
-import { Locale, SheetTitle } from '../../@types/googleSheet';
+import { CellValue, Locale, SheetTitle } from '../../@types/googleSheet';
 import { GoogleRowManager } from '../RowManager';
 import { GoogleCellManager } from '../CellManager';
 import { GoogleSheetExporterParams } from '../../sheetExporter/googleSheetExporter';
@@ -241,4 +241,58 @@ export class GoogleWorkSheetManager extends WorkSheet {
       rows: parsedRows,
     };
   }
+
+  /** update sheet */
+  public updateSheet = async (dataSet: Map<SheetTitle, Set<CellValue>>) => {
+    if (validator.isNullish(dataSet)) {
+      console.log('dataSet is not found. update finished');
+
+      return;
+    }
+
+    try {
+      const transactions = Array.from(dataSet.entries()).map(
+        async ([sheetTitle, cellValueSet]) => {
+          const registry = this.sheetRegistry?.get(sheetTitle);
+
+          // if sheet is not found, return null
+          if (validator.isNullish(registry)) {
+            console.log(`sheet "${sheetTitle}" is not found. ignored...`);
+
+            return null;
+          }
+
+          const rowManager = registry.rowManager;
+
+          await rowManager.loadRowsFromHeaderRowNumber(
+            this.googleSheetExporterParams?.headerStartRowNumber
+          );
+
+          const headerValues = rowManager.getHeaderValues();
+          const defaultLocale = this.googleSheetExporterParams.defaultLocale;
+
+          // if defaultLocale is not found in header, return null
+          if (!headerValues.includes(defaultLocale)) {
+            console.log(
+              `sheet "${sheetTitle} has no "${defaultLocale}" header. ignored...`
+            );
+
+            return null;
+          }
+
+          const updateDataSet = Array.from(cellValueSet).map((v) => ({
+            [defaultLocale]: v,
+          }));
+
+          await rowManager.addRows(updateDataSet);
+
+          console.log('update finished');
+        }
+      );
+
+      await Promise.all(transactions);
+    } catch (err) {
+      throw err;
+    }
+  };
 }
