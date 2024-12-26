@@ -38,7 +38,7 @@ const exporter = await googleSheetExporter({
     clientEmail: 'your-client-email',
     privateKey: 'your-private-key',
   },
-  defaultLocale: 'default-language',
+  defaultLocale: 'default-language-in-sheet-header',
 });
 
 await exporter.exportTranslations();

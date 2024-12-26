@@ -8,8 +8,11 @@
     "test": "vitest",
     "plop": "plop",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset-canary": "pnpm changeset pre enter canary",
     "versioning": "pnpm changeset version --since=origin/feature",
-    "publish:pnpm": "turbo run build &&pnpm publish -r",
+    "versioning-canary": "pnpm versioning && pnpm changeset pre exit",
+    "publish": "turbo run build && pnpm changeset publish",
+    "publish-canary": "turbo run build && pnpm changeset publish --tag canary",
     "prepare": "husky"
   },
   "devDependencies": {

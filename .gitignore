@@ -42,3 +42,7 @@ scripts/*
 # Exclusions (Files to Include)
 !plopfile.js
 !tsup.config.ts
+
+# changeset
+.changeset/pre.json
+.changeset/*.md

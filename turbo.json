@@ -7,9 +7,6 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
-    "publish:npm": {
-      "dependsOn": ["build"]
-    },
     "lint": {
       "dependsOn": ["^lint"]
     },

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.4
+
+### Patch Changes
+
+- test: test2 publish of canary version on sheet-i18n
+
+## 0.2.3
+
+### Patch Changes
+
+- test: test publish of canary version on sheet-i18n
+
 ## 0.2.2
 
 ### Patch Changes
