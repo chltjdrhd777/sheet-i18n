@@ -1,6 +1,6 @@
 {
   "name": "sheet-i18n",
-  "version": "0.2.2",
+  "version": "0.2.5-canary.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -16,6 +16,11 @@
       "require": "./dist/index.js",
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
+    },
+    "./exporter": {
+      "require": "./dist/exporter/index.js",
+      "import": "./dist/exporter/index.mjs",
+      "types": "./dist/exporter/index.d.ts"
     }
   },
   "keywords": [
