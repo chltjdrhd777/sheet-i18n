@@ -30,7 +30,7 @@ This is the core package for sheet-based translations. You can use it to work wi
 The **server-side exporter** subpackage allows you to interact with Google Sheets and export translations directly into your project. This is primarily used in server-side environments, such as Next.js API routes or other backend frameworks, where you want to fetch and store translations from a Google Spreadsheet to be served to clients or used within your server application.
 
 ```jsx
-import { googleSheetExporter } from 'sheet-i18n';
+import { googleSheetExporter } from 'sheet-i18n/exporter';
 
 const exporter = await googleSheetExporter({
   credentials: {
