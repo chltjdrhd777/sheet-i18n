@@ -1,0 +1,34 @@
+{
+  "name": "@sheet-i18n/react",
+  "version": "0.1.0",
+  "description": "i18n client logic based on react",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [],
+  "author": {
+    "name": "devAnderson",
+    "email": "chltjdrhd777@gmail.com",
+    "url": "https://github.com/chltjdrhd777"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@sheet-i18n/typescript-config": "workspace:*"
+  }
+}

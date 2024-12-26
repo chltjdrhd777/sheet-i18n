@@ -36,7 +36,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@sheet-i18n/exporter": "workspace:*"
+    "@sheet-i18n/exporter": "workspace:*",
+    "@sheet-i18n/react": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.0.0",

@@ -118,11 +118,20 @@ importers:
         specifier: workspace:*
         version: link:../configs/typescript-config
 
+  packages/react:
+    devDependencies:
+      '@sheet-i18n/typescript-config':
+        specifier: workspace:*
+        version: link:../configs/typescript-config
+
   packages/sheet-i18n:
     dependencies:
       '@sheet-i18n/exporter':
         specifier: workspace:*
         version: link:../exporter
+      '@sheet-i18n/react':
+        specifier: workspace:*
+        version: link:../react
     devDependencies:
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
