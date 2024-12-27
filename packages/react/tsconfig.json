@@ -1,5 +1,5 @@
 {
-  "extends": "@sheet-i18n/typescript-config/node.json",
+  "extends": "@sheet-i18n/typescript-config/react.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist"

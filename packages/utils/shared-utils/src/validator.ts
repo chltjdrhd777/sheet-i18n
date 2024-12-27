@@ -41,9 +41,11 @@ export function hasInvalidValuePrerequisites(expected: unknown): boolean {
 
 export function checkPrerequisiteParams<P extends ObjectType>(
   params: P,
-  preRequisites: (keyof P)[] = []
+  preRequisites?: (keyof P)[]
 ) {
-  const preRequisiteObj = preRequisites.reduce((acc, cur) => {
+  const _preRequisites = preRequisites ?? Object.keys(params) ?? [];
+
+  const preRequisiteObj = _preRequisites.reduce((acc, cur) => {
     acc[cur] = params[cur];
 
     return acc;
@@ -53,7 +55,7 @@ export function checkPrerequisiteParams<P extends ObjectType>(
 
   if (isInvalid) {
     throw new Error(
-      `Please set the valid requisites first: ${Object.entries(preRequisites).join(', ')}`
+      `Please set the valid requisites first: ${Object.entries(_preRequisites).join(', ')}`
     );
   }
 }
