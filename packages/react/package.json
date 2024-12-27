@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/react",
-  "version": "0.1.1-canary.0",
+  "version": "0.1.1-canary.4",
   "description": "i18n client logic based on react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -29,14 +29,14 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@sheet-i18n/errors": "workspace:*",
-    "@sheet-i18n/shared-utils": "workspace:*",
     "@sheet-i18n/typescript-config": "workspace:*",
     "@swc/core": "^1.10.2",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2"
   },
   "dependencies": {
+    "@sheet-i18n/errors": "workspace:*",
+    "@sheet-i18n/shared-utils": "workspace:*",
     "react": "^19.0.0",
     "react-intl": "^7.0.4"
   }

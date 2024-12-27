@@ -101,6 +101,12 @@ importers:
 
   packages/exporter:
     dependencies:
+      '@sheet-i18n/errors':
+        specifier: workspace:*
+        version: link:../utils/errors
+      '@sheet-i18n/shared-utils':
+        specifier: workspace:*
+        version: link:../utils/shared-utils
       google-auth-library:
         specifier: ^9.15.0
         version: 9.15.0
@@ -108,18 +114,18 @@ importers:
         specifier: ^4.1.4
         version: 4.1.4(google-auth-library@9.15.0)
     devDependencies:
-      '@sheet-i18n/errors':
-        specifier: workspace:*
-        version: link:../utils/errors
-      '@sheet-i18n/shared-utils':
-        specifier: workspace:*
-        version: link:../utils/shared-utils
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
         version: link:../configs/typescript-config
 
   packages/react:
     dependencies:
+      '@sheet-i18n/errors':
+        specifier: workspace:*
+        version: link:../utils/errors
+      '@sheet-i18n/shared-utils':
+        specifier: workspace:*
+        version: link:../utils/shared-utils
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -127,12 +133,6 @@ importers:
         specifier: ^7.0.4
         version: 7.0.4(react@19.0.0)(typescript@5.5.4)
     devDependencies:
-      '@sheet-i18n/errors':
-        specifier: workspace:*
-        version: link:../utils/errors
-      '@sheet-i18n/shared-utils':
-        specifier: workspace:*
-        version: link:../utils/shared-utils
       '@sheet-i18n/typescript-config':
         specifier: workspace:*
         version: link:../configs/typescript-config
