@@ -1,8 +1,11 @@
 'use client';
 
+import { validator } from '@sheet-i18n/shared-utils';
+
 import { createI18nStore } from './createI18nStore';
 import { IntlProvider, IntlProviderProps } from './IntlProvider';
 import { useTranslation } from './useTranslation';
+import { InvalidI18nContextStateError } from './Errors';
 
 export interface I18nContextState<
   TSupportedLocales extends readonly string[],
@@ -19,6 +22,12 @@ export function createI18nContext<
 >(
   i18nStore: ReturnType<typeof createI18nStore<TSupportedLocales, TLocaleSet>>
 ) {
+  if (validator.isNullish(i18nStore)) {
+    throw new InvalidI18nContextStateError(
+      '⚠️ no i18nStore provided. To use createI18nContext, you must provide an i18nStore as a parameter'
+    );
+  }
+
   const IntlProviderImpl = ({
     currentLocale,
     children,
