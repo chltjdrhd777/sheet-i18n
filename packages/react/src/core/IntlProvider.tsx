@@ -1,5 +1,3 @@
-'use client';
-
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 
 import { createI18nStore } from './createI18nStore';

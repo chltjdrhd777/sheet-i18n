@@ -1,5 +1,3 @@
-'use client';
-
 import { validator } from '@sheet-i18n/shared-utils';
 
 import { createI18nStore } from './createI18nStore';
