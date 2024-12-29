@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.2
+
+### Patch Changes
+
+- fix: remove error from useTranslation values parameter
+  - @sheet-i18n/react@0.2.1
+
 ## 1.1.1
 
 ### Patch Changes

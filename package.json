@@ -12,7 +12,7 @@
     "changeset-canary": "pnpm changeset pre enter canary",
     "versioning": "pnpm changeset version --since=origin/feature",
     "versioning-canary": "pnpm versioning && pnpm changeset pre exit",
-    "publish": "turbo run build && pnpm changeset publish",
+    "publish": "turbo run build && pnpm publish -r",
     "publish-canary": "turbo run build && pnpm changeset publish --tag canary",
     "prepare": "husky"
   },

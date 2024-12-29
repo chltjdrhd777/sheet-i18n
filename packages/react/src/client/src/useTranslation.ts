@@ -15,10 +15,6 @@ type UseIntlParams<D = MessageDescriptor> =
     ? [...R, Omit<D, 'id'>]
     : never;
 type $TParams = Partial<UseIntlParams>;
-type BigIntExcludedValues =
-  $TParams[0] extends Record<string, infer V>
-    ? Record<string, Exclude<V, bigint>>
-    : never;
 type BigIntExcludedReactNode = Exclude<React.ReactNode, bigint>;
 
 interface UseTranslationParams<
@@ -50,7 +46,7 @@ export function useTranslation<
   );
 
   const t = <
-    TValues extends BigIntExcludedValues,
+    TValues extends $TParams[0],
     TOpts extends $TParams[1],
     TDescriptor extends $TParams[2],
   >(
@@ -61,7 +57,8 @@ export function useTranslation<
   ) => {
     const descriptor = { ...(_descriptor ?? {}), id } as MessageDescriptor;
 
-    return newIntl.$t<BigIntExcludedReactNode>(descriptor, values, opts);
+    //TODO: fix the type error from values
+    return newIntl.$t<BigIntExcludedReactNode>(descriptor, values as any, opts);
   };
 
   return { t };
