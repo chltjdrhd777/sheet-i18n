@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+### Patch Changes
+
+- docs: minor version update and ignore root publishing
+
 ## 1.0.0
 
 ### Major Changes
