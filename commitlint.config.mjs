@@ -10,6 +10,7 @@ export default {
       2, // 1: warn, 2: error
       'always',
       [
+        'release',
         'build',
         'chore',
         'ci',

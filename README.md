@@ -26,8 +26,8 @@ It serves as a bridge between your translation data and your application, offeri
 
 The `sheet-i18n` ecosystem is divided into two main packages:
 
-- 🌍 `sheet-i18n/exporter`
-- ⚛️ `sheet-i18n/react`
+- `sheet-i18n/exporter`
+- `sheet-i18n/react`
 
 ---
 
@@ -149,7 +149,7 @@ The exported translations will be saved in a format that is easy to use for loca
 ---
 
 <details open>
-<summary><h3>⚛️ Frontend Translation Provider - sheet-i18n/react</h3></summary>
+<summary>⚛️ Frontend Translation Provider - sheet-i18n/react</summary>
 
 #### `sheet-i18n/react`
 

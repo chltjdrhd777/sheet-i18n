@@ -1,5 +1,6 @@
 {
   "name": "sheet-i18n-root",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "turbo build",

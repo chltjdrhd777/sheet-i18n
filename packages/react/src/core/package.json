@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/react-core",
-  "version": "0.1.2-canary.0",
+  "version": "0.2.0",
   "description": "a core package for react modules used by sheet-i18n",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

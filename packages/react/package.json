@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/react",
-  "version": "0.1.2-canary.2",
+  "version": "0.2.0",
   "description": "i18n client logic based on react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
