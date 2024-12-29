@@ -381,7 +381,7 @@ const translatedMessage = t('login'); // login is key
 const translatedMessage = t('{username} shown', { username: 'John Doe' });
 ```
 
-> 💡 Note: The values object can contain any type of data, including React components.
+💡 Note: The values object can contain any type of data, including React components.
 
 ```tsx
 // <Username /> shown
