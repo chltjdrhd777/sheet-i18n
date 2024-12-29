@@ -1,12 +1,12 @@
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 
-import { createI18nStore } from './createI18nStore';
+import { I18nStore } from './I18nStore';
 
 export type IntlProviderProps<
   TSupportedLocales extends readonly string[],
   TLocaleSet extends Record<TSupportedLocales[number], Record<string, any>>,
 > = {
-  i18nStore: ReturnType<typeof createI18nStore<TSupportedLocales, TLocaleSet>>;
+  i18nStore: I18nStore<TSupportedLocales, TLocaleSet>;
   currentLocale: TSupportedLocales[number];
   children: React.ReactNode;
 };

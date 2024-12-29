@@ -1,9 +1,12 @@
 import { validator } from '@sheet-i18n/shared-utils';
 
-import { createI18nStore } from './createI18nStore';
+import { I18nStore } from './I18nStore';
 import { IntlProvider, IntlProviderProps } from './IntlProvider';
 import { useTranslation } from './useTranslation';
-import { InvalidI18nContextStateError } from './Errors';
+import {
+  InvalidI18nContextStateError,
+  IsNotInstanceOfI18nStoreError,
+} from './Errors';
 
 export interface I18nContextState<
   TSupportedLocales extends readonly string[],
@@ -17,12 +20,16 @@ export interface I18nContextState<
 export function createI18nContext<
   TSupportedLocales extends readonly string[],
   TLocaleSet extends Record<TSupportedLocales[number], Record<string, any>>,
->(
-  i18nStore: ReturnType<typeof createI18nStore<TSupportedLocales, TLocaleSet>>
-) {
+>(i18nStore: I18nStore<TSupportedLocales, TLocaleSet>) {
   if (validator.isNullish(i18nStore)) {
     throw new InvalidI18nContextStateError(
       '⚠️ no i18nStore provided. To use createI18nContext, you must provide an i18nStore as a parameter'
+    );
+  }
+
+  if (i18nStore instanceof I18nStore !== true) {
+    throw new IsNotInstanceOfI18nStoreError(
+      '⚠️ The provided i18nStore is invalid. Please ensure a store instance you passed is an instance of I18nStore.'
     );
   }
 

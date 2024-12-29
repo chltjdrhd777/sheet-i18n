@@ -7,7 +7,7 @@ import {
   IntlShape,
 } from 'react-intl';
 
-import { createI18nStore } from './createI18nStore';
+import { I18nStore } from './I18nStore';
 
 const intlCache = createIntlCache();
 
@@ -23,7 +23,7 @@ interface UseTranslationParams<
   TSheetTitle = keyof TLocaleSet[TSupportedLocales[number]],
 > {
   sheetTitle: TSheetTitle;
-  i18nStore: ReturnType<typeof createI18nStore<TSupportedLocales, TLocaleSet>>;
+  i18nStore: I18nStore<TSupportedLocales, TLocaleSet>;
 }
 
 export function useTranslation<
@@ -57,7 +57,7 @@ export function useTranslation<
   ) => {
     const descriptor = { ...(_descriptor ?? {}), id } as MessageDescriptor;
 
-    return newIntl.$t<TValues[keyof TValues]>(descriptor, values, opts);
+    return newIntl.$t(descriptor, values, opts);
   };
 
   return { t };

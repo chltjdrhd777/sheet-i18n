@@ -1,8 +1,9 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./base.json",
   "compilerOptions": {
-    "target": "ES5",
-    "lib": ["ES5", "DOM"],
+    "target": "ES6",
+    "lib": ["ES6", "DOM"],
     "jsx": "react-jsx"
   }
 }
