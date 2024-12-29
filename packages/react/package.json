@@ -1,10 +1,10 @@
 {
-  "name": "@sheet-i18n/exporter",
-  "version": "1.0.0",
-  "description": "sheet exporter using sheet api",
+  "name": "@sheet-i18n/react",
+  "version": "0.1.2-canary.2",
+  "description": "i18n client logic based on react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
@@ -22,10 +22,8 @@
     "access": "public"
   },
   "keywords": [
-    "sheet-i18n",
-    "spreadsheet",
-    "i18n",
-    "translation"
+    "sheet-18n",
+    "react"
   ],
   "author": {
     "name": "devAnderson",
@@ -33,13 +31,12 @@
     "url": "https://github.com/chltjdrhd777"
   },
   "license": "ISC",
-  "dependencies": {
-    "google-auth-library": "^9.15.0",
-    "google-spreadsheet": "^4.1.4",
-    "@sheet-i18n/shared-utils": "workspace:*",
-    "@sheet-i18n/errors": "workspace:*"
-  },
   "devDependencies": {
-    "@sheet-i18n/typescript-config": "workspace:*"
+    "@sheet-i18n/typescript-config": "workspace:*",
+    "@swc/core": "^1.10.2"
+  },
+  "dependencies": {
+    "@sheet-i18n/react-core": "workspace:*",
+    "@sheet-i18n/react-client": "workspace:*"
   }
 }

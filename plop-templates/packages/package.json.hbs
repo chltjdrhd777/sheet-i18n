@@ -1,5 +1,5 @@
 {
-  "name": "@sheet-i18n/{{dashCase utilName}}",
+  "name": "@sheet-i18n/{{dashCase packagesName}}",
   "version": "0.1.0",
   "description": "{{description}}",
   "main": "./dist/index.js",
@@ -9,16 +9,17 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  files: [
+  "files": [
     "dist/**/*"
   ],
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
     }
   },
-  publishConfig: {
+  "publishConfig": {
     "access": "public"
   },
   "keywords": [],
@@ -28,7 +29,6 @@
     "url": "https://github.com/chltjdrhd777"
   },
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
     "@sheet-i18n/typescript-config": "workspace:*"
   }

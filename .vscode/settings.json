@@ -5,6 +5,14 @@
       "mode": "auto"
     }
   ],
+  "eslint.options": {
+    "ignorePattern": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "build/**/*",
+      "out/**/*"
+    ]
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },

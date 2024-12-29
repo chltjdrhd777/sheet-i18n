@@ -12,15 +12,15 @@
     "dist/**/*"
   ],
   "exports": {
-    ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
-    },
     "./exporter": {
       "require": "./dist/exporter/index.js",
       "import": "./dist/exporter/index.mjs",
       "types": "./dist/exporter/index.d.ts"
+    },
+    "./react": {
+      "require": "./dist/react/index.js",
+      "import": "./dist/react/index.mjs",
+      "types": "./dist/react/index.d.ts"
     }
   },
   "keywords": [
@@ -36,7 +36,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@sheet-i18n/exporter": "workspace:*"
+    "@sheet-i18n/exporter": "workspace:*",
+    "@sheet-i18n/react": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.0.0",
