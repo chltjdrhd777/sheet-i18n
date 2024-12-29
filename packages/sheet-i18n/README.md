@@ -1,6 +1,6 @@
 # sheet-i18n
 
-**An all-in-one package for sheet-based translations.**
+**An all-in-one package for sheet-based translation**
 
 [![npm](https://img.shields.io/npm/v/sheet-i18n)](https://www.npmjs.com/package/sheet-i18n)  
 <a href="https://sheet-i18n.vercel.app/en" target="_blank">
@@ -20,10 +20,19 @@ npm install sheet-i18n
 
 ### 📑 Main Package - `sheet-i18n`
 
-This is the core package for sheet-based translations. You can use it to work with Google Sheets and export translations.
+`sheet-i18n` is a **powerful and flexible library** designed to streamline the process of managing and utilizing translations stored in **Google Sheets** _(planned to support other spreadsheets soon)_.
 
-<details>
-  <summary>📄 Server export function - sheet-i18n/exporter</summary>
+It serves as a bridge between your translation data and your application, offering an **end-to-end solution** for exporting, managing, and integrating translations into your projects.
+
+The `sheet-i18n` ecosystem is divided into two main packages:
+
+- 🌍 `sheet-i18n/export`
+- ⚛️ `sheet-i18n/react`
+
+---
+
+<details open>
+<summary><h3>🌍 Server Export Function - sheet-i18n/exporter</h3></summary>
 
 #### `sheet-i18n/exporter`
 
@@ -139,8 +148,8 @@ The exported translations will be saved in a format that is easy to use for loca
 
 ---
 
-<details>
-  <summary>📄 Client export function - sheet-i18n/react</summary>
+<details open>
+<summary><h3>⚛️ Frontend Translation Provider - sheet-i18n/react</h3></summary>
 
 #### `sheet-i18n/react`
 
@@ -150,18 +159,12 @@ This package provides tools to handle translations in React applications using c
 
 ## ✨ Package Introduction
 
-- **createI18nStore**: `Store Creation` for managing translation data.
-- **createI18nContext**: `React Context` to generate providers and hooks for translations.
-- **IntlProvider**: `Translation Provider` for managing current locale.
-- **useTranslation**: `Translation Hook` for easy access to translation messages.
+- **`I18nStore`**: _Store Creation Class_ for managing translation data.
+- **`createI18nContext`**: _React Context_ to generate providers and hooks for translation.
+- **`IntlProvider`**: _React Translation Provider_ for managing current locale.
+- **`useTranslation`**: _Translation Hook_ for easy access to translation messages.
 
 ## 🚀 Getting Started
-
-### Package list
-
-```bash
-import { createI18nStore, createI18nContext, useTranslation } from '@sheet-i18n/react';
-```
 
 ### Basic Usage
 
@@ -187,7 +190,7 @@ Prepare locale JSON files:
 }
 ```
 
-#### 2. Create i18n Store
+#### 2. Initialize i18n Store
 
 this store will be used as a core translations module.
 
@@ -195,9 +198,9 @@ this store will be used as a core translations module.
 import en from './en.json';
 import ko from './ko.json';
 
-import { createI18nStore } from '@sheet-i18n/react';
+import { I18nStore } from '@sheet-i18n/react';
 
-export const i18nStore = createI18nStore({
+export const i18nStore = new I18nStore({
   supportedLocales: ['ko', 'en'],
   defaultLocale: 'ko',
   localeSet: {
@@ -222,9 +225,9 @@ export const { IntlProvider, useTranslation } = createI18nContext(i18nStore);
 import React from 'react';
 import { IntlProvider } from './i18nContext';
 
-const App = (currentLocale: string) => {
+const App = () => {
   return (
-    <IntlProvider currentLocale={currentLocale}>
+    <IntlProvider>
       <YourComponent />
     </IntlProvider>
   );
@@ -253,27 +256,38 @@ const YourComponent = () => {
 
 ## 📦 API Reference
 
-### `createI18nStore`
+### `I18nStore`
 
-Creates a store for managing translations.
+The `I18nStore` manages type-safe translation states, ensuring consistency across locales.
 
 #### Parameters:
 
-- **`supportedLocales`** (array): Array of supported locale strings in your project.
-- **`defaultLocale`** (string): Default locale to use.
-- **`localeSet`** (object): Object containing translations for each locale.
+- **`supportedLocales`**: Array of supported locale strings.
+- **`defaultLocale`**: The default locale, included in `supportedLocales`.
+- **`localeSet`**: An object where keys match `supportedLocales`, and values are translation sets.
+
+> ⚠️ Caveats:
+
+1. `supportedLocales` must be an array of locale strings.
+2. `defaultLocale` must exist in `supportedLocales`.
+3. `localeSet` must be an object with keys matching `supportedLocales`.
 
 #### Example:
 
 ```tsx
-const i18nStore = createI18nStore({
+export const i18nStore = new I18nStore({
   supportedLocales: ['ko', 'en'],
   defaultLocale: 'ko',
-  localeSet: { ko, en },
+  localeSet: {
+    ko,
+    en,
+  },
 });
-```
 
----
+// Accessing properties
+i18nStore.supportedLocales; // ['ko', 'en']
+i18nStore.defaultLocale; // 'ko'
+```
 
 ### `createI18nContext`
 
@@ -281,7 +295,12 @@ Generates React context, including the `IntlProvider` and `useTranslation`.
 
 #### Parameters:
 
-- **`i18nStore`**: Output of `createI18nStore`.
+- **`i18nStore`**: Instance of `I18nStore`.
+
+> ⚠️ Caveats:
+
+1. `i18nStore` passed to createI18nContext must be an instance of I18nStore.
+2. custom object is not allowed to be passed to createI18nContext.
 
 #### Example:
 
@@ -289,24 +308,44 @@ Generates React context, including the `IntlProvider` and `useTranslation`.
 const { IntlProvider, useTranslation } = createI18nContext(i18nStore);
 ```
 
----
-
 ### `IntlProvider`
 
 A React component to provide translations to child components.
 
-#### Props:
+#### Properties:
 
-- **`currentLocale`**: Key locale. This will determine which locale to use for translations data.
+- **`currentLocale`** (optional):
+
+  - A key representing the current locale to use for translations.
+  - If not provided, the user's preferred language is automatically detected based on their browser settings.
+  - Falls back to the default locale in **i18nStore** if the detected language is unsupported.
+
 - **`children`**: React children.
 
 #### Example:
 
 ```tsx
-<IntlProvider currentLocale="ko">{children}</IntlProvider>
-```
+// Add currentLocale if you want to manually handle the locale
 
----
+// The example is Next.js app routing
+import { i18nStore } from './file-path-of-i18nStore-initiated';
+
+interface LayoutProps {
+  params: {
+    locale: Locale;
+  };
+}
+
+export default function Layout({
+  children,
+  params,
+}: PropsWithChildren<PageProps>) {
+  const { defaultLocale } = i18nStore;
+  const currentLocale = params?.locale ?? defaultLocale;
+
+  return <IntlProvider currentLocale={currentLocale}>{children}</IntlProvider>;
+}
+```
 
 ### `useTranslation`
 
@@ -356,25 +395,6 @@ Custom error messages help identify misconfigurations:
 1. **Invalid Params**: Ensure `supportedLocales`, `defaultLocale`, and `localeSet` are correctly provided.
 2. **Missing Default Locale**: The `defaultLocale` must exist in `supportedLocales`.
 3. **Invalid LocaleSet**: Ensure the `localeSet` keys match `supportedLocales`.
-
-## 🌍 Example Usage in Applications
-
-```tsx
-import { useTranslation } from './i18nContext';
-
-const TableComponent = () => {
-  const { t } = useTranslation('header');
-
-  const columns = [
-    {
-      title: t('logout'),
-      dataIndex: 'action',
-    },
-  ];
-
-  return <Table columns={columns} />;
-};
-```
 
 ## 📜 Library Versions 🔢
 

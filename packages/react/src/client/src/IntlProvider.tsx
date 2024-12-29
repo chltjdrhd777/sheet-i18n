@@ -18,14 +18,13 @@ export function IntlProvider<
   currentLocale,
   children,
 }: IntlProviderProps<TSupportedLocales, TLocaleSet>) {
-  const { defaultLocale, localeSet } = i18nStore;
-  const locale = currentLocale ?? defaultLocale;
+  const locale = currentLocale ?? detectClientLanguage(i18nStore);
 
   return (
     <ReactIntlProvider
       locale={locale}
       messages={
-        localeSet[currentLocale] as unknown as Record<
+        i18nStore?.localeSet[locale] as unknown as Record<
           TSupportedLocales[number],
           any
         >
@@ -34,4 +33,23 @@ export function IntlProvider<
       {children}
     </ReactIntlProvider>
   );
+}
+
+function detectClientLanguage<
+  TSupportedLocales extends readonly string[],
+  TLocaleSet extends Record<TSupportedLocales[number], Record<string, any>>,
+>(
+  i18nStore: I18nStore<TSupportedLocales, TLocaleSet>
+): TSupportedLocales[number] {
+  const { defaultLocale, supportedLocales } = i18nStore;
+
+  if (typeof navigator !== 'undefined' && navigator?.languages) {
+    const preferredLocale = navigator.languages.find((lang) =>
+      supportedLocales.includes(lang as TSupportedLocales[number])
+    );
+
+    return (preferredLocale as TSupportedLocales[number]) ?? defaultLocale;
+  }
+
+  return defaultLocale ?? '';
 }

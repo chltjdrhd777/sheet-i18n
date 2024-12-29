@@ -15,6 +15,11 @@ type UseIntlParams<D = MessageDescriptor> =
     ? [...R, Omit<D, 'id'>]
     : never;
 type $TParams = Partial<UseIntlParams>;
+type BigIntExcludedValues =
+  $TParams[0] extends Record<string, infer V>
+    ? Record<string, Exclude<V, bigint>>
+    : never;
+type BigIntExcludedReactNode = Exclude<React.ReactNode, bigint>;
 
 interface UseTranslationParams<
   TSupportedLocales extends readonly string[],
@@ -45,7 +50,7 @@ export function useTranslation<
   );
 
   const t = <
-    TValues extends $TParams[0],
+    TValues extends BigIntExcludedValues,
     TOpts extends $TParams[1],
     TDescriptor extends $TParams[2],
   >(
@@ -56,7 +61,7 @@ export function useTranslation<
   ) => {
     const descriptor = { ...(_descriptor ?? {}), id } as MessageDescriptor;
 
-    return newIntl.$t<React.ReactNode>(descriptor, values, opts);
+    return newIntl.$t<BigIntExcludedReactNode>(descriptor, values, opts);
   };
 
   return { t };

@@ -36,8 +36,14 @@ export function createI18nContext<
   const IntlProviderImpl = ({
     currentLocale,
     children,
-  }: Omit<IntlProviderProps<TSupportedLocales, TLocaleSet>, 'i18nStore'>) => (
-    <IntlProvider currentLocale={currentLocale} i18nStore={i18nStore}>
+  }: Omit<
+    IntlProviderProps<TSupportedLocales, TLocaleSet>,
+    'currentLocale' | 'i18nStore'
+  > & { currentLocale?: string }) => (
+    <IntlProvider
+      currentLocale={currentLocale as TSupportedLocales[number]}
+      i18nStore={i18nStore}
+    >
       {children}
     </IntlProvider>
   );
