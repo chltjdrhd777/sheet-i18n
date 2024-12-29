@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0
+
+### Major Changes
+
+- major release of sheet-i18n
+
+### Patch Changes
+
+- Updated dependencies
+  - @sheet-i18n/exporter@1.0.0
+
 ## 0.2.4
 
 ### Patch Changes

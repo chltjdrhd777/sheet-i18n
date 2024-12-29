@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/exporter",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "sheet exporter using sheet api",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

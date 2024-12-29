@@ -1,5 +1,11 @@
 # @sheet-i18n/typescript-config
 
+## 1.0.0
+
+### Major Changes
+
+- major release of sheet-i18n
+
 ## 0.2.0
 
 ### Minor Changes
