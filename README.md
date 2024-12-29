@@ -26,13 +26,13 @@ It serves as a bridge between your translation data and your application, offeri
 
 The `sheet-i18n` ecosystem is divided into two main packages:
 
-- 🌍 `sheet-i18n/export`
+- 🌍 `sheet-i18n/exporter`
 - ⚛️ `sheet-i18n/react`
 
 ---
 
 <details open>
-<summary><h3>🌍 Server Export Function - sheet-i18n/exporter</h3></summary>
+<summary>🌍 Server Export Function - sheet-i18n/exporter</summary>
 
 #### `sheet-i18n/exporter`
 
@@ -267,10 +267,10 @@ The `I18nStore` manages type-safe translation states, ensuring consistency acros
 - **`localeSet`**: An object where keys match `supportedLocales`, and values are translation sets.
 
 > ⚠️ Caveats:
-
-1. `supportedLocales` must be an array of locale strings.
-2. `defaultLocale` must exist in `supportedLocales`.
-3. `localeSet` must be an object with keys matching `supportedLocales`.
+>
+> 1. `supportedLocales` must be an array of locale strings.
+> 2. `defaultLocale` must exist in `supportedLocales`.
+> 3. `localeSet` must be an object with keys matching `supportedLocales`.
 
 #### Example:
 
@@ -298,9 +298,9 @@ Generates React context, including the `IntlProvider` and `useTranslation`.
 - **`i18nStore`**: Instance of `I18nStore`.
 
 > ⚠️ Caveats:
-
-1. `i18nStore` passed to createI18nContext must be an instance of I18nStore.
-2. custom object is not allowed to be passed to createI18nContext.
+>
+> 1. `i18nStore` passed to createI18nContext must be an instance of I18nStore.
+> 2. custom object is not allowed to be passed to createI18nContext.
 
 #### Example:
 
@@ -382,11 +382,11 @@ const translatedMessage = t('{username} shown', { username: 'John Doe' });
 ```
 
 > 💡 Note: The values object can contain any type of data, including React components.
->
-> ```tsx
-> // <Username /> shown
-> const translatedMessage = t('{username} shown', { username: <Username /> });
-> ```
+
+```tsx
+// <Username /> shown
+const translatedMessage = t('{username} shown', { username: <Username /> });
+```
 
 ## 🛠 Error Handling
 
