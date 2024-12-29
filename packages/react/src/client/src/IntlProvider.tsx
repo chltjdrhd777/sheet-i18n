@@ -1,6 +1,5 @@
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
-
-import { I18nStore } from './I18nStore';
+import { I18nStore } from '@sheet-i18n/react-core';
 
 export type IntlProviderProps<
   TSupportedLocales extends readonly string[],

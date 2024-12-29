@@ -1,4 +1,2 @@
-export * from './core/I18nStore';
-export * from './core/IntlProvider';
-export * from './core/useTranslation';
-export * from './core/createI18nContext';
+export * from '@sheet-i18n/react-core';
+export * from '@sheet-i18n/react-client';

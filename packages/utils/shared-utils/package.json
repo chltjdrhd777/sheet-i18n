@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/shared-utils",
-  "version": "0.2.2-canary.2",
+  "version": "0.2.3-canary.0",
   "description": "commonly used pure functions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

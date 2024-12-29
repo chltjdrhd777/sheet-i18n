@@ -6,9 +6,17 @@ import {
   InvalidSupportedLocalesError,
   NoDefaultLocaleInSupportedLocalesError,
 } from './Errors';
-import { I18nContextState } from './createI18nContext';
 
 const preRequisites = ['supportedLocales', 'localeSet', 'defaultLocale'];
+
+interface I18nContextState<
+  TSupportedLocales extends readonly string[],
+  TLocaleSet extends Record<TSupportedLocales[number], Record<string, any>>,
+> {
+  supportedLocales: Readonly<TSupportedLocales>;
+  defaultLocale: TSupportedLocales[number];
+  localeSet: TLocaleSet;
+}
 
 export class I18nStore<
   TSupportedLocales extends readonly string[],

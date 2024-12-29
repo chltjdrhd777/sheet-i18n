@@ -6,8 +6,7 @@ import {
   useIntl,
   IntlShape,
 } from 'react-intl';
-
-import { I18nStore } from './I18nStore';
+import { I18nStore } from '@sheet-i18n/react-core';
 
 const intlCache = createIntlCache();
 
@@ -46,18 +45,18 @@ export function useTranslation<
   );
 
   const t = <
-    TValues extends $TParams['0'],
-    TOpts extends $TParams['1'],
-    T_Descriptor extends $TParams['2'],
+    TValues extends $TParams[0],
+    TOpts extends $TParams[1],
+    TDescriptor extends $TParams[2],
   >(
     id: TMessageId,
     values?: TValues,
     opts?: TOpts,
-    _descriptor?: T_Descriptor
+    _descriptor?: TDescriptor
   ) => {
     const descriptor = { ...(_descriptor ?? {}), id } as MessageDescriptor;
 
-    return newIntl.$t(descriptor, values, opts);
+    return newIntl.$t<React.ReactNode>(descriptor, values, opts);
   };
 
   return { t };

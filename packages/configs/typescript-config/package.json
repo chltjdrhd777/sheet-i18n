@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/typescript-config",
-  "version": "0.2.2-canary.2",
+  "version": "0.2.3-canary.0",
   "license": "MIT",
   "files": [
     "base.json",

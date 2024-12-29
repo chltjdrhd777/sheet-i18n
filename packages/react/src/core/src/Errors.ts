@@ -5,7 +5,3 @@ export class InvalidI18nStoreParamsError extends CustomError {}
 export class InvalidSupportedLocalesError extends CustomError {}
 export class NoDefaultLocaleInSupportedLocalesError extends CustomError {}
 export class InvalidLocaleSetError extends CustomError {}
-
-/**createI18nContext */
-export class InvalidI18nContextStateError extends CustomError {}
-export class IsNotInstanceOfI18nStoreError extends CustomError {}

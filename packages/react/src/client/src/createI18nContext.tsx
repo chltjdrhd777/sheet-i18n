@@ -1,6 +1,6 @@
 import { validator } from '@sheet-i18n/shared-utils';
+import { I18nStore } from '@sheet-i18n/react-core';
 
-import { I18nStore } from './I18nStore';
 import { IntlProvider, IntlProviderProps } from './IntlProvider';
 import { useTranslation } from './useTranslation';
 import {
