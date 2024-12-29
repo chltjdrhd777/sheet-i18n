@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.3
+
+### Patch Changes
+
+- test: patch test2 with changeset
+- Updated dependencies
+  - @sheet-i18n/exporter@1.1.1
+  - @sheet-i18n/react@0.2.2
+
 ## 1.1.2
 
 ### Patch Changes

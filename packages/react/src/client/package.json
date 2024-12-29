@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/react-client",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "a client package for react modules used by sheet-i18n",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

@@ -1,6 +1,6 @@
 {
   "name": "@sheet-i18n/errors",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "custom errors to handle exceptions",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
