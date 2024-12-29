@@ -1,7 +1,7 @@
 {
-  "name": "@sheet-i18n/{{dashCase utilName}}",
-  "version": "0.1.0",
-  "description": "{{description}}",
+  "name": "@sheet-i18n/react-core",
+  "version": "0.1.2-canary.0",
+  "description": "a core package for react modules used by sheet-i18n",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -9,17 +9,16 @@
     "build": "tsup",
     "dev": "tsup --watch"
   },
-  files: [
+  "files": [
     "dist/**/*"
   ],
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs"
     }
   },
-  publishConfig: {
+  "publishConfig": {
     "access": "public"
   },
   "keywords": [],
@@ -29,6 +28,10 @@
     "url": "https://github.com/chltjdrhd777"
   },
   "license": "ISC",
+  "dependencies": {
+    "@sheet-i18n/shared-utils": "workspace:*",
+    "@sheet-i18n/errors": "workspace:*"
+  },
   "devDependencies": {
     "@sheet-i18n/typescript-config": "workspace:*"
   }

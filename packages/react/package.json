@@ -1,10 +1,10 @@
 {
-  "name": "@sheet-i18n/shared-utils",
-  "version": "0.2.3-canary.0",
-  "description": "commonly used pure functions",
+  "name": "@sheet-i18n/react",
+  "version": "0.1.2-canary.2",
+  "description": "i18n client logic based on react",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.mts",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch"
@@ -21,7 +21,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [],
+  "keywords": [
+    "sheet-18n",
+    "react"
+  ],
   "author": {
     "name": "devAnderson",
     "email": "chltjdrhd777@gmail.com",
@@ -29,6 +32,11 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "@sheet-i18n/typescript-config": "workspace:*"
+    "@sheet-i18n/typescript-config": "workspace:*",
+    "@swc/core": "^1.10.2"
+  },
+  "dependencies": {
+    "@sheet-i18n/react-core": "workspace:*",
+    "@sheet-i18n/react-client": "workspace:*"
   }
 }
