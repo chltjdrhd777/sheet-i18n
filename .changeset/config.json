@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "feature",
   "updateInternalDependencies": "patch",
-  "ignore": ["sheet-i18n-root"]
+  "ignore": []
 }
