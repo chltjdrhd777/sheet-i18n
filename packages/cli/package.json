@@ -1,0 +1,56 @@
+{
+  "name": "@sheet-i18n/cli",
+  "version": "0.1.0",
+  "description": "A CLI for sheet-based translation focused on DX",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "sheet-i18n": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "link:dev": "pnpm run build && pnpm link --global"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "sheet-i18n",
+    "cli",
+    "google-sheets",
+    "translation",
+    "i18n",
+    "typescript"
+  ],
+  "author": {
+    "name": "devAnderson",
+    "email": "chltjdrhd777@gmail.com",
+    "url": "https://github.com/chltjdrhd777"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@sheet-i18n/typescript-config": "workspace:*",
+    "@types/babel__traverse": "^7.20.6"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.26.3",
+    "@babel/traverse": "^7.26.4",
+    "@sheet-i18n/errors": "workspace:*",
+    "@sheet-i18n/shared-utils": "workspace:*",
+    "chokidar": "^4.0.3",
+    "commander": "^13.0.0",
+    "inquirer": "^12.3.0",
+    "winston": "^3.17.0"
+  }
+}
