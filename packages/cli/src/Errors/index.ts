@@ -3,6 +3,9 @@ import { CustomError } from '@sheet-i18n/errors';
 /** Logger */
 export class InitLoggerError extends CustomError {}
 
+/** Command */
+export class InvalidCommandInstanceError extends CustomError {}
+
 /** Flag */
 export class InvalidFlagParams extends CustomError {}
 

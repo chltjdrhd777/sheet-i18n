@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-
-import { flagController } from './Services/Flag';
+import { CLIController } from './Services/CLI';
 
 (async () => {
-  await flagController.installFlagHandlers();
+  // initialize command
+  const commandController = new CLIController();
 
-  console.log('🚀 Hello World!');
+  await commandController.initializeCLI();
 })();

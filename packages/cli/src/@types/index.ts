@@ -1,12 +1,14 @@
+import { Command } from 'commander';
 import { createLogger } from 'winston';
 
 /** logger */
 export type LoggerType = ReturnType<typeof createLogger>;
 
-/** Flag */
-export type FlagType = string;
-export type FlagDescription = string;
-export type FlagHandler = (...args: any) => any;
+/** action params */
+export interface ActionParams {
+  logger: LoggerType;
+  program: Command;
+}
 
 /** translation */
 export interface TranslationData {
